@@ -1,0 +1,24 @@
+{{ define "get_survey.template" }}
+
+{{$question := index .Contents "Question"}}
+{{$surveyID := index .Contents "SurveyID"}}
+
+
+<div class="text-center m-5">
+    <p class="font-weight-bold">{{ $question }}</p>
+    <div>
+        <form>
+            <div class="form-group">
+                <label for="formAnswer">Answer: </label>
+                <input type="text" class="form-control" id="answer" placeholder="Type your answer...">
+                <input type="hidden" id="survey-id" value="{{ $surveyID }}">
+            </div>
+        </form>
+        <div class="survey-menu-wrapper">
+            <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="btn-exit">Exit</button>
+        </div>
+    </div>
+</div>
+
+{{ end }}

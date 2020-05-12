@@ -1,0 +1,16 @@
+{
+    "survey_data": [
+        {
+            "id": 0,
+            "category": "animal",
+            "question": "What is the most common animal on earth?",
+            "answers": [{ "string": "", "counts": 0 }]
+        },
+        {
+            "id": 1,
+            "category": "home",
+            "question": "What is the most common lost item in house?",
+            "answers": [{ "string": "", "counts": 0 }]
+        }
+    ]
+}
