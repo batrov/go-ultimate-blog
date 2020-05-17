@@ -1,4 +1,4 @@
-{{ define "layout.template" }}
+{{ define "layout.template" }} 
 
 {{ $content := index .Contents "Content" }}
 
@@ -6,16 +6,19 @@
 
 <head>
     <title>{{ .Title }}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+    {{ if eq ( $content ) "get_home_index.template" }} 
+    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+    {{ end }}
 </head>
 
 <body>
-    {{ if eq ( $content ) "get_home_index.template" }}
-        {{ template "get_home_index.template" . }}
-    {{ else if eq ( $content ) "get_goquiz_index.template" }}
-        {{ template "get_goquiz_index.template" . }}
-    {{ else if eq ( $content ) "get_goquiz_survey.template" }}
-        {{ template "get_goquiz_survey.template" . }}
+    {{ if eq ( $content ) "get_home_index.template" }} 
+        {{ template "get_home_index.template" . }} 
+    {{ else if eq ( $content ) "get_goquiz_index.template" }} 
+        {{ template "get_goquiz_index.template" . }} 
+    {{ else if eq ( $content ) "get_goquiz_survey.template" }} 
+        {{ template "get_goquiz_survey.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}
@@ -24,7 +27,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    {{ if eq ( $content ) "get_goquiz_index.template" }}
+    {{ if eq ( $content ) "get_home_index.template" }}
+        <script src="/assets/js/home/get_index.js"></script>
+    {{ else if eq ( $content ) "get_goquiz_index.template" }}
         <script src="/assets/js/goquiz/get_index.js"></script>
     {{ else if eq ( $content ) "get_goquiz_survey.template" }}
         <script src="/assets/js/goquiz/get_survey.js"></script>
