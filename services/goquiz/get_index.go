@@ -1,4 +1,4 @@
-package services
+package goquiz
 
 import "github.com/Batrov/go-ultimate-blog/commons"
 

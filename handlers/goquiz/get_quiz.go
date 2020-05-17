@@ -1,4 +1,4 @@
-package handlers
+package goquiz
 
 import (
 	"net/http"

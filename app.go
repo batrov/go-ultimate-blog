@@ -6,7 +6,8 @@ import (
 	"net/http"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
-	goquiz "github.com/Batrov/go-ultimate-blog/handlers/goquiz"
+	"github.com/Batrov/go-ultimate-blog/handlers/goquiz"
+	"github.com/Batrov/go-ultimate-blog/handlers/home"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -20,7 +21,7 @@ func initRouter() {
 	router := httprouter.New()
 	router.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 
-	router.GET("/", goquiz.GetIndex)
+	router.GET("/", home.GetIndex)
 	router.GET("/goquiz", goquiz.GetIndex)
 	router.GET("/goquiz/survey", goquiz.GetSurvey)
 	router.GET("/goquiz/quiz", goquiz.GetQuiz)

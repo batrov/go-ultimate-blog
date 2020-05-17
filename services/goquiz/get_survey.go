@@ -1,4 +1,4 @@
-package services
+package goquiz
 
 import (
 	"encoding/json"

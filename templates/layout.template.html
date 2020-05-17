@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    {{ if eq ( $content ) "get_goquiz_index.template" }}
+    {{ if eq ( $content ) "get_home_index.template" }}
+        {{ template "get_home_index.template" . }}
+    {{ else if eq ( $content ) "get_goquiz_index.template" }}
         {{ template "get_goquiz_index.template" . }}
     {{ else if eq ( $content ) "get_goquiz_survey.template" }}
         {{ template "get_goquiz_survey.template" . }}

@@ -1,10 +1,10 @@
-package handlers
+package goquiz
 
 import (
 	"net/http"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
-	goquiz "github.com/Batrov/go-ultimate-blog/services/goquiz"
+	"github.com/Batrov/go-ultimate-blog/services/goquiz"
 	"github.com/julienschmidt/httprouter"
 )
 

@@ -1,33 +1,19 @@
-package handlers
+package home
 
 import (
 	"net/http"
 
-	"github.com/Batrov/goquiz/commons"
-	"github.com/Batrov/goquiz/services"
+	"github.com/Batrov/go-ultimate-blog/commons"
 	"github.com/julienschmidt/httprouter"
 )
 
 // GetIndex Handler
 func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var (
-		data   interface{}
-		err    error
-		params map[string]interface{}
+		err error
 	)
 
 	r.ParseForm()
-
-	params = map[string]interface{}{
-		"full_name": r.FormValue("full_name"),
-	}
-
-	data, err = services.GetIndex(params)
-	if err != nil {
-		commons.PrintErr(err, "GIH_00")
-	}
-
-	response := data.(commons.GetIndexResponse)
 
 	fileName := "get_home_index.template"
 
@@ -36,8 +22,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	templateData := commons.TemplateData{
 		Title: "Index",
 		Contents: map[string]interface{}{
-			"Content":  fileName,
-			"FullName": response.FullName,
+			"Content": fileName,
 		},
 	}
 
