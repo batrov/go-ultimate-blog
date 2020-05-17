@@ -1,4 +1,7 @@
-{{ define "get_goquiz_survey.template" }} {{$question := index .Contents "Question"}} {{$surveyID := index .Contents "SurveyID"}}
+{{ define "get_goquiz_survey.template" }} 
+
+{{$question := index .Contents "Question"}} 
+{{$surveyID := index .Contents "SurveyID"}}
 
 <div class="text-center m-5">
     <p class="font-weight-bold">{{ $question }}</p>
