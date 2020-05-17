@@ -27,7 +27,7 @@ func GetSurvey(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	response := data.(commons.GetSurveyResponse)
 
-	fileName := "get_survey.template"
+	fileName := "get_goquiz_survey.template"
 
 	t := commons.GetTemplate().Lookup(commons.TemplateLayoutName)
 

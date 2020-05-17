@@ -1,9 +1,9 @@
 $(document).ready(function() {
     $('.menu-wrapper #btn-survey').click(function() {
-        window.location.href = '/survey';
+        window.location.href = '/go-quiz/survey';
     });
 
     $('.menu-wrapper #btn-quiz').click(function() {
-        window.location.href = '/quiz';
+        window.location.href = '/go-quiz/quiz';
     });
 });

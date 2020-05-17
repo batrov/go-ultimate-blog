@@ -29,7 +29,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	response := data.(commons.GetIndexResponse)
 
-	fileName := "get_index.template"
+	fileName := "get_goquiz_index.template"
 
 	t := commons.GetTemplate().Lookup(commons.TemplateLayoutName)
 
