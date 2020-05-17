@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/Batrov/go-quiz/commons"
-	"github.com/Batrov/go-quiz/services"
+	"github.com/Batrov/go-ultimate-blog/commons"
+	goquiz "github.com/Batrov/go-ultimate-blog/services/goquiz"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -20,7 +20,7 @@ func GetSurvey(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		"submittedSurvey": []int64{},
 	}
 
-	data, err = services.GetSurvey(params)
+	data, err = goquiz.GetSurvey(params)
 	if err != nil {
 		commons.PrintErr(err, "GSH_00")
 	}

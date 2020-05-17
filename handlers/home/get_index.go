@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/Batrov/go-quiz/commons"
-	"github.com/Batrov/go-quiz/services"
+	"github.com/Batrov/goquiz/commons"
+	"github.com/Batrov/goquiz/services"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -29,7 +29,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	response := data.(commons.GetIndexResponse)
 
-	fileName := "get_goquiz_index.template"
+	fileName := "get_home_index.template"
 
 	t := commons.GetTemplate().Lookup(commons.TemplateLayoutName)
 

@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/Batrov/go-quiz/commons"
+	"github.com/Batrov/go-ultimate-blog/commons"
 )
 
 // GetSurvey Service

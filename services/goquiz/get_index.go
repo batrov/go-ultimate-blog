@@ -1,6 +1,6 @@
 package services
 
-import "github.com/Batrov/go-quiz/commons"
+import "github.com/Batrov/go-ultimate-blog/commons"
 
 // GetIndex Service
 func GetIndex(params map[string]interface{}) (interface{}, error) {
