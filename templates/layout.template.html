@@ -9,12 +9,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
     {{ if eq ( $content ) "get_home_index.template" }} 
     <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+    {{ else if eq ( $content ) "get_home_about.template" }} 
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">  
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/about.css">
     {{ end }}
 </head>
 
 <body>
     {{ if eq ( $content ) "get_home_index.template" }} 
         {{ template "get_home_index.template" . }} 
+    {{ else if eq ( $content ) "get_home_about.template" }} 
+        {{ template "get_home_about.template" . }} 
     {{ else if eq ( $content ) "get_goquiz_index.template" }} 
         {{ template "get_goquiz_index.template" . }} 
     {{ else if eq ( $content ) "get_goquiz_survey.template" }} 
@@ -29,6 +36,11 @@
 
     {{ if eq ( $content ) "get_home_index.template" }}
         <script src="/assets/js/home/get_index.js"></script>
+    {{ else if eq ( $content ) "get_home_about.template" }}
+        <script src="/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/assets/js/home/get_about.js"></script>
     {{ else if eq ( $content ) "get_goquiz_index.template" }}
         <script src="/assets/js/goquiz/get_index.js"></script>
     {{ else if eq ( $content ) "get_goquiz_survey.template" }}

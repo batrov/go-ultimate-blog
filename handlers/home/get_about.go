@@ -8,19 +8,19 @@ import (
 )
 
 // GetIndex Handler
-func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+func GetAbout(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	var (
 		err error
 	)
 
 	r.ParseForm()
 
-	fileName := "get_home_index.template"
+	fileName := "get_home_about.template"
 
 	t := commons.GetTemplate().Lookup(commons.TemplateLayoutName)
 
 	templateData := commons.TemplateData{
-		Title: "Home",
+		Title: "About Me",
 		Contents: map[string]interface{}{
 			"Content": fileName,
 		},
@@ -28,7 +28,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	err = t.Execute(w, templateData)
 	if err != nil {
-		commons.PrintErr(err, "GIH_02")
+		commons.PrintErr(err, "GAH_00")
 	}
 
 }

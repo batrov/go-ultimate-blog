@@ -22,6 +22,7 @@ func initRouter() {
 	router.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 
 	router.GET("/", home.GetIndex)
+	router.GET("/about", home.GetAbout)
 	router.GET("/goquiz", goquiz.GetIndex)
 	router.GET("/goquiz/survey", goquiz.GetSurvey)
 	router.GET("/goquiz/quiz", goquiz.GetQuiz)
