@@ -54,7 +54,7 @@ $(document).ready(function() {
 
             savings = lifetimeIncome - lifetimeExpenses
 
-            resultRetireSummary = `You will have savings of ${savings.toLocaleString()} ${currency} when you die at age ${lifespan}`
+            resultRetireSummary = `You will have total income of ${lifetimeIncome.toLocaleString()} ${currency} and save ${savings.toLocaleString()} ${currency} when you die at age ${lifespan}`
 
         } else {
             resultRetire = `Cannot retire in your entire lifetime`
