@@ -3,7 +3,16 @@ package commons
 import (
 	"fmt"
 	"html/template"
+	"os"
 )
+
+func GetPort() string {
+	p := os.Getenv("PORT")
+	if p != "" {
+		return ":" + p
+	}
+	return ":8080"
+}
 
 // PrintErr function
 func PrintErr(err error, errorCode string) {

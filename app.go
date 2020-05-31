@@ -13,8 +13,7 @@ import (
 )
 
 func main() {
-	fmt.Printf("System running on %s\n", commons.PORT)
-
+	fmt.Printf("System running on %s\n", commons.GetPort())
 	initRouter()
 }
 
@@ -34,5 +33,5 @@ func initRouter() {
 	router.GET("/retirement-calculator", retirementcalc.GetIndex)
 	router.POST("/retirement-calculator", goquiz.GetIndex)
 
-	log.Fatal(http.ListenAndServe(commons.PORT, router))
+	log.Fatal(http.ListenAndServe(commons.GetPort(), router))
 }
