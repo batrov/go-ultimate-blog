@@ -11,17 +11,24 @@
                 <label for="lifespan">Your Estimated Lifespan (Year): </label>
                 <input type="number" class="form-control" id="lifespan" placeholder="e.g. 70">
 
-                <label for="income">Your Income (IDR) per month: </label>
+                <label for="income">Your Income per Month (IDR): </label>
                 <input type="number" class="form-control" id="income" placeholder="e.g. 5000000">
 
-                <label for="expenses">Your Expenses per month (IDR): </label>
+                <label for="expenses">Your Expenses per Month (IDR): </label>
                 <input type="number" class="form-control" id="expenses" placeholder="e.g. 5000000">
 
+                <label for="inflation">Inflation per Year (%): </label>
+                <input type="number" class="form-control" id="inflation" placeholder="e.g. 3.2">
             </div>
         </form>
         <div class="menu-wrapper">
             <button type="submit" class="btn btn-primary" id="btn-submit">Calculate</button>
             <button type="submit" class="btn btn-primary" id="btn-exit">Exit</button>
+        </div>
+
+        <div>
+            <br>
+            <h3 id="result"></h3>
         </div>
     </div>
 </div>
