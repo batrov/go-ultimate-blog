@@ -1,0 +1,29 @@
+{{ define "get_retirementcalc_index.template" }} 
+
+<div class="text-center m-5">
+    <div>
+        <h1>Retirement Plan Calculator</h1>
+        <form>
+            <div class="form-group">
+                <label for="age">Your Age: </label>
+                <input type="number" class="form-control" id="age" placeholder="e.g. 22">
+
+                <label for="lifespan">Your Estimated Lifespan (Year): </label>
+                <input type="number" class="form-control" id="lifespan" placeholder="e.g. 70">
+
+                <label for="income">Your Income (IDR) per month: </label>
+                <input type="number" class="form-control" id="income" placeholder="e.g. 5000000">
+
+                <label for="expenses">Your Expenses per month (IDR): </label>
+                <input type="number" class="form-control" id="expenses" placeholder="e.g. 5000000">
+
+            </div>
+        </form>
+        <div class="menu-wrapper">
+            <button type="submit" class="btn btn-primary" id="btn-submit">Calculate</button>
+            <button type="submit" class="btn btn-primary" id="btn-exit">Exit</button>
+        </div>
+    </div>
+</div>
+
+{{ end }}

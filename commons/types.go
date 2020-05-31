@@ -33,3 +33,10 @@ type TemplateData struct {
 	Title    string
 	Contents map[string]interface{}
 }
+
+type PostCalculateRetirementCalcParams struct {
+	Age int64
+}
+
+type PostCalculateRetirementCalcResponse struct {
+}

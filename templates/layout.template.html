@@ -1,6 +1,7 @@
 {{ define "layout.template" }} 
 
 {{ $content := index .Contents "Content" }}
+{{ $jsfile := index .Contents "JS_File" }}
 
 <html>
 
@@ -26,6 +27,8 @@
         {{ template "get_goquiz_index.template" . }} 
     {{ else if eq ( $content ) "get_goquiz_survey.template" }} 
         {{ template "get_goquiz_survey.template" . }} 
+    {{ else if eq ( $content ) "get_retirementcalc_index.template" }} 
+        {{ template "get_retirementcalc_index.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}
@@ -45,6 +48,8 @@
         <script src="/assets/js/goquiz/get_index.js"></script>
     {{ else if eq ( $content ) "get_goquiz_survey.template" }}
         <script src="/assets/js/goquiz/get_survey.js"></script>
+    {{ else if ne ( $jsfile ) "" }}
+        <script src="/assets/js/{{ $jsfile }}"></script>
     {{ end }}
 
 </body>
