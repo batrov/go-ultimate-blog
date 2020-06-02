@@ -12,29 +12,54 @@ $(document).ready(function() {
             $('#btn-advanced').removeClass("btn-warning")
             $('#btn-advanced').addClass("btn-info")
             $('#btn-advanced').text("Advanced Mode: True")
+
+            $('.advanced-wrapper').show()
         } else {
             $("#advanced").val("0")
             $('#btn-advanced').removeClass("btn-info")
             $('#btn-advanced').addClass("btn-warning")
             $('#btn-advanced').text("Advanced Mode: False")
+
+            $('.advanced-wrapper').hide()
         }
+        doCalculate()
     });
 
     $('.menu-wrapper #btn-exit').click(function() {
-        console.log("exit")
         window.location.href = '/';
+    });
+
+    $(".ot-expenses-wrapper").on('click', '.btn-add-oew', function(e) {
+        $('.ot-expenses-wrapper').append($(this).parent().parent()[0].outerHTML)
+        $('.btn-del-oew').show()
+        doCalculate()
+    });
+
+    $(".ot-expenses-wrapper").on('click', '.btn-del-oew', function(e) {
+        if ($('.ot-expenses-wrapper').children().length > 1) {
+            $(this).parent().parent().remove()
+            if ($('.ot-expenses-wrapper').children().length > 1) {
+                $('.btn-del-oew').show()
+            } else {
+                $('.btn-del-oew').hide()
+            }
+        }
+        doCalculate()
     });
 
     function doCalculate() {
         let age, lifespan, income, expenses, inflation
 
-        age = $("#age").val()
-        lifespan = $("#lifespan").val()
-        income = $("#income").val()
-        expenses = $("#expenses").val()
-        inflation = $("#inflation").val()
+        age = parseInt($("#age").val())
+        lifespan = parseInt($("#lifespan").val())
+        income = parseFloat($("#income").val())
+        expenses = parseFloat($("#expenses").val())
+        inflation = parseFloat($("#inflation").val())
         currency = $("#currency").val()
-        raise = $("#raise").val()
+        raise = parseFloat($("#raise").val())
+        advancedMode = $("#advanced").val() == "1"
+        investments = parseFloat($("#investments").val())
+        returns = parseFloat($("#returns").val())
 
         workingYear = lifespan - age
         yearlyExpenses = expenses * 12
@@ -42,16 +67,30 @@ $(document).ready(function() {
         lifetimeExpenses = 0
         lifetimeIncome = 0
         workingMonth = 0
+        routineInvestment = investments
 
         for (i = 0; i < workingYear; i++) {
             yearlyExpenses = yearlyExpenses + (inflation / 100 * yearlyExpenses)
             lifetimeExpenses += yearlyExpenses
         }
 
+        if (advancedMode) {
+            $(".ot-expenses").each(function() {
+                lifetimeExpenses += parseInt($(this).val())
+            });
+        }
+
         for (i = 0; i < workingYear * 12; i++) {
             workingMonth++
             raisedIncome = raisedIncome * (100 + (raise / 12)) / 100
             lifetimeIncome += raisedIncome
+
+            if (advancedMode) {
+                investmentsProfits = returns / 12 / 100 * investments
+                investments += investmentsProfits
+                investments += routineInvestment
+                lifetimeIncome += investmentsProfits
+            }
 
             if (lifetimeIncome >= lifetimeExpenses) {
                 break
