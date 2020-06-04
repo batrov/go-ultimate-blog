@@ -5,6 +5,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"os"
+	"strings"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
 )
@@ -20,6 +21,9 @@ func PostSurvey(params commons.PostSurveyRequest) (bool, error) {
 		err = errors.New("Cannot send empty answer")
 		return false, commons.Error(err, "PS_00.0")
 	}
+
+	params.Answer = strings.TrimSpace(params.Answer)
+	params.Answer = strings.ToLower(params.Answer)
 
 	jsonFile, err := os.Open(commons.SurveyJsonPath)
 	if err != nil {
