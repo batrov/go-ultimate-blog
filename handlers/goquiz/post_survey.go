@@ -21,7 +21,7 @@ func PostSurvey(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		return
 	}
 
-	ok, err := goquiz.PostSurvey(postSurveyRequest)
+	ok, err := goquiz.PostSurvey(postSurveyRequest, true)
 	if err != nil {
 		commons.PrintErr(err, "GSH_00")
 	}

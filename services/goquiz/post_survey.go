@@ -3,6 +3,7 @@ package goquiz
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -11,10 +12,10 @@ import (
 )
 
 // PostSurvey Service
-func PostSurvey(params commons.PostSurveyRequest) (bool, error) {
+func PostSurvey(params commons.PostSurveyRequest, createFile bool) (bool, error) {
 	var (
 		err         error
-		surveyDatas commons.GetSurveyData
+		surveyDatas commons.PostSurveyAnswerData
 	)
 
 	if params.Answer == "" {
@@ -25,9 +26,16 @@ func PostSurvey(params commons.PostSurveyRequest) (bool, error) {
 	params.Answer = strings.TrimSpace(params.Answer)
 	params.Answer = strings.ToLower(params.Answer)
 
-	jsonFile, err := os.Open(commons.SurveyJsonPath)
+	jsonFile, err := os.Open(commons.SurveyAnswerJsonPath)
 	if err != nil {
-		return false, commons.Error(err, "PS_00")
+		// Try create file
+		if createFile {
+			os.Create(commons.SurveyAnswerJsonPath)
+			fmt.Println("File created: ", commons.SurveyAnswerJsonPath)
+			PostSurvey(params, false)
+		} else {
+			return false, commons.Error(err, "PS_00")
+		}
 	}
 
 	defer jsonFile.Close()
@@ -36,20 +44,34 @@ func PostSurvey(params commons.PostSurveyRequest) (bool, error) {
 
 	json.Unmarshal(byteValue, &surveyDatas)
 
-	for i, val := range surveyDatas.SurveyDatas {
+	var hasData bool
+	for i, val := range surveyDatas.SurveyAnswerDatas {
 		if val.ID == params.SurveyID {
+			hasData = true
 			var sameAnswer bool
 			for j, val := range val.Answers {
 				if val.String == params.Answer {
-					surveyDatas.SurveyDatas[i].Answers[j].Counts++
+					surveyDatas.SurveyAnswerDatas[i].Answers[j].Counts++
 					sameAnswer = true
 				}
 			}
 			if !sameAnswer {
-				surveyDatas.SurveyDatas[i].Answers = append(surveyDatas.SurveyDatas[i].Answers, commons.SurveyAnswer{Counts: 1, String: params.Answer})
+				surveyDatas.SurveyAnswerDatas[i].Answers = append(surveyDatas.SurveyAnswerDatas[i].Answers, commons.SurveyAnswer{Counts: 1, String: params.Answer})
 			}
 			break
 		}
+	}
+
+	if !hasData {
+		surveyDatas.SurveyAnswerDatas = append(surveyDatas.SurveyAnswerDatas, commons.SurveyAnswerData{
+			ID: params.SurveyID,
+			Answers: []commons.SurveyAnswer{
+				commons.SurveyAnswer{
+					String: params.Answer,
+					Counts: 1,
+				},
+			},
+		})
 	}
 
 	newFile, err := json.MarshalIndent(surveyDatas, "", "    ")
@@ -57,7 +79,7 @@ func PostSurvey(params commons.PostSurveyRequest) (bool, error) {
 		return false, commons.Error(err, "PS_01")
 	}
 
-	err = ioutil.WriteFile(commons.SurveyJsonPath, newFile, 0644)
+	err = ioutil.WriteFile(commons.SurveyAnswerJsonPath, newFile, 0644)
 	if err != nil {
 		return false, commons.Error(err, "PS_02")
 	}

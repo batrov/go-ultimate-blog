@@ -10,14 +10,22 @@ type SurveyAnswer struct {
 }
 
 type SurveyData struct {
-	ID       int64          `json:"id"`
-	Category string         `json:"category"`
-	Question string         `json:"question"`
-	Answers  []SurveyAnswer `json:"answers"`
+	ID       int64  `json:"id"`
+	Category string `json:"category"`
+	Question string `json:"question"`
+}
+
+type SurveyAnswerData struct {
+	ID      int64          `json:"id"`
+	Answers []SurveyAnswer `json:"answers"`
 }
 
 type GetSurveyData struct {
 	SurveyDatas []SurveyData `json:"survey_data"`
+}
+
+type PostSurveyAnswerData struct {
+	SurveyAnswerDatas []SurveyAnswerData `json:"survey_answer_data"`
 }
 
 type GetSurveyResponse struct {

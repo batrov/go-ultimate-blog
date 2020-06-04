@@ -1,0 +1,21 @@
+{
+    "survey_answer_data": [
+        {
+            "id": 0,
+            "answers": [
+                {
+                    "string": "dog",
+                    "counts": 5
+                },
+                {
+                    "string": "doggy",
+                    "counts": 1
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "answers": []
+        }
+    ]
+}
