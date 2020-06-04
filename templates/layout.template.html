@@ -29,6 +29,8 @@
         {{ template "get_goquiz_survey.template" . }} 
     {{ else if eq ( $content ) "get_retirementcalc_index.template" }} 
         {{ template "get_retirementcalc_index.template" . }} 
+    {{ else if eq ( $content ) "get_iganalyzer_index.template" }} 
+        {{ template "get_iganalyzer_index.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}

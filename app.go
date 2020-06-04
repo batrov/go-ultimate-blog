@@ -8,6 +8,7 @@ import (
 	"github.com/Batrov/go-ultimate-blog/commons"
 	"github.com/Batrov/go-ultimate-blog/handlers/goquiz"
 	"github.com/Batrov/go-ultimate-blog/handlers/home"
+	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
 	"github.com/Batrov/go-ultimate-blog/handlers/retirementcalc"
 	"github.com/julienschmidt/httprouter"
 )
@@ -32,6 +33,9 @@ func initRouter() {
 	// Retirement Calculator
 	router.GET("/retirement-calculator", retirementcalc.GetIndex)
 	router.POST("/retirement-calculator", goquiz.GetIndex)
+
+	// Insta Analyzer
+	router.GET("/instagram-analyzer", iganalyzer.GetIndex)
 
 	log.Fatal(http.ListenAndServe(commons.GetPort(), router))
 }
