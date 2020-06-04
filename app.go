@@ -28,6 +28,7 @@ func initRouter() {
 	// Go Quiz
 	router.GET("/goquiz", goquiz.GetIndex)
 	router.GET("/goquiz/survey", goquiz.GetSurvey)
+	router.POST("/goquiz/survey", goquiz.PostSurvey)
 	router.GET("/goquiz/quiz", goquiz.GetQuiz)
 
 	// Retirement Calculator

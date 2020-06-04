@@ -9,13 +9,14 @@
         <form>
             <div class="form-group">
                 <label for="formAnswer">Answer: </label>
-                <input type="text" class="form-control" id="answer" placeholder="Type your answer...">
+                <input type="text" class="form-control" id="answer" placeholder="Type your answer..." required>
                 <input type="hidden" id="survey-id" value="{{ $surveyID }}">
             </div>
         </form>
+        <div id="result"></div>
         <div class="survey-menu-wrapper">
-            <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
-            <button type="submit" class="btn btn-primary" id="btn-exit">Exit</button>
+            <button type="button" class="btn btn-primary" id="btn-submit">Submit</button>
+            <button type="button" class="btn btn-primary" id="btn-exit">Exit</button>
         </div>
     </div>
 </div>

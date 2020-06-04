@@ -29,6 +29,11 @@ type GetQuizResponse struct {
 	FullName string
 }
 
+type PostSurveyRequest struct {
+	SurveyID int64  `json:"survey_id"`
+	Answer   string `json:"answer"`
+}
+
 type TemplateData struct {
 	Title    string
 	Contents map[string]interface{}
