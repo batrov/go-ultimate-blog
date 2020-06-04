@@ -2,6 +2,7 @@
 
 {{$question := index .Contents "Question"}} 
 {{$surveyID := index .Contents "SurveyID"}}
+{{$submittedAnswers := index .Contents "SubmittedAnswers"}}
 
 <div class="text-center m-5">
     <p class="font-weight-bold">{{ $question }}</p>
@@ -11,6 +12,7 @@
                 <label for="formAnswer">Answer: </label>
                 <input type="text" class="form-control" id="answer" placeholder="Type your answer..." required>
                 <input type="hidden" id="survey-id" value="{{ $surveyID }}">
+                <input type="hidden" id="submitted-answers" value="{{ $submittedAnswers }}">
             </div>
         </form>
         <div id="result"></div>
