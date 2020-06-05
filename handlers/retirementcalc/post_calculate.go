@@ -1,36 +1,33 @@
 package retirementcalc
 
 import (
-	"encoding/json"
 	"net/http"
 
-	"github.com/Batrov/go-ultimate-blog/commons"
-	"github.com/Batrov/go-ultimate-blog/services/retirementcalc"
 	"github.com/julienschmidt/httprouter"
 )
 
 // PostCalculate Handler
 func PostCalculate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	var (
-		err error
-	)
+	// var (
+	// 	err error
+	// )
 
-	r.ParseForm()
+	// r.ParseForm()
 
-	params := commons.PostCalculateRetirementCalcParams{
-		Age: 22,
-	}
+	// params := commons.PostCalculateRetirementCalcParams{
+	// 	Age: 22,
+	// }
 
-	data, err := retirementcalc.PostCalculate(params)
-	if err != nil {
-		commons.PrintErr(err, "GIH_00")
-	}
+	// data, err := retirementcalc.PostCalculate(params)
+	// if err != nil {
+	// 	commons.PrintErr(err, "GIH_00")
+	// }
 
-	w.Header().Set("Content-type", "application/json")
-	w.WriteHeader(http.StatusOK)
+	// w.Header().Set("Content-type", "application/json")
+	// w.WriteHeader(http.StatusOK)
 
-	encoded, _ := json.Marshal(data)
+	// encoded, _ := json.Marshal(data)
 
-	w.Write(encoded)
+	// w.Write(encoded)
 
 }

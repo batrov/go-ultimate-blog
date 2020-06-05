@@ -132,3 +132,36 @@ $(document).ready(function() {
 
     }
 });
+
+function sendStatistics() {
+    let otherExpenses = 0
+
+    $(".ot-expenses").each(function() {
+        otherExpenses += parseInt($(this).val())
+    });
+
+    jsonReq = {
+        age: parseInt($("#age").val()),
+        lifespan: parseInt($("#lifespan").val()),
+        income: parseFloat($("#income").val()),
+        expenses: parseFloat($("#expenses").val()),
+        inflation: parseFloat($("#inflation").val()),
+        currency: $("#currency").val(),
+        raise: parseFloat($("#raise").val()),
+        advanced_mode: $("#advanced").val() == "1",
+        investments: parseFloat($("#investments").val()),
+        returns: parseFloat($("#returns").val()),
+        other_expenses: parseInt(otherExpenses),
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {}
+    };
+
+    xhttp.open("POST", "/retirement-calculator/statistics", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify(jsonReq));
+}
+
+setTimeout(sendStatistics, 30000)

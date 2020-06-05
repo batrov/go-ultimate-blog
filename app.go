@@ -35,7 +35,8 @@ func initRouter() {
 
 	// Retirement Calculator
 	router.GET("/retirement-calculator", retirementcalc.GetIndex)
-	router.POST("/retirement-calculator", goquiz.GetIndex)
+	router.POST("/retirement-calculator", retirementcalc.PostStatistics)
+	router.POST("/retirement-calculator/statistics", retirementcalc.PostStatistics)
 
 	// Insta Analyzer
 	router.GET("/instagram-analyzer", iganalyzer.GetIndex)
