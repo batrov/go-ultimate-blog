@@ -1,12 +1,19 @@
 {{ define "get_goquiz_index.template" }}
 
+{{ $fullName := index .Contents "FullName" }}
+
 <div class="text-center">
-    <h1 class="text-center">Hello {{ index .Contents "FullName" }}</h1>
+    <h1 class="text-center">Hello {{ $fullName }}</h1>
 
     <div class="menu-wrapper">
         <button type="submit" class="btn btn-primary" id="btn-survey">Join the Survey!</button>
         <button type="submit" class="btn btn-primary" id="btn-quiz">Take Quizzes!</button>
         <button type="submit" class="btn btn-danger" id="btn-quit">Quit</button>
+        {{ if eq ( $fullName ) "Hermawan" }} 
+            <button type="button" class="btn btn-danger" id="btn-reset">Reset Answer</button>
+            <div id="reset-result"></div>
+        {{ end }}
+
     </div>
 </div>
 

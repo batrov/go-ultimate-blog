@@ -11,4 +11,18 @@ $(document).ready(function() {
         console.log("quit")
         window.location.href = '/';
     });
+
+    $('.menu-wrapper #btn-reset').click(function() {
+        console.log("reset")
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                $('#reset-result').html(this.responseText)
+            }
+        };
+
+        xhttp.open("POST", "/goquiz/reset-answer", true);
+        xhttp.send();
+    });
+
 });

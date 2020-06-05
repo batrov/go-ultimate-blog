@@ -30,6 +30,7 @@ func initRouter() {
 	router.GET("/goquiz/survey", goquiz.GetSurvey)
 	router.POST("/goquiz/survey", goquiz.PostSurvey)
 	router.GET("/goquiz/quiz", goquiz.GetQuiz)
+	router.POST("/goquiz/reset-answer", goquiz.PostResetAnswer)
 
 	// Retirement Calculator
 	router.GET("/retirement-calculator", retirementcalc.GetIndex)
