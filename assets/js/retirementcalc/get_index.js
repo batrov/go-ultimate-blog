@@ -164,4 +164,6 @@ function sendStatistics() {
     xhttp.send(JSON.stringify(jsonReq));
 }
 
-setTimeout(sendStatistics, 30000)
+window.addEventListener("beforeunload", function(e) {
+    sendStatistics()
+}, false);
