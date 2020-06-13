@@ -1,4 +1,4 @@
-# Hermawan's Go Ultimate Vlog
+# Hermawan's Go Ultimate Blog
 
 Use go version 1.14.3
 
