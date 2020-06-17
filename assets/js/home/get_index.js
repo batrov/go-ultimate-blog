@@ -10,4 +10,9 @@ $(document).ready(function() {
     $('.dropdown-menu #retirement-calculator').click(function() {
         window.location.href = '/retirement-calculator';
     });
+
+    $('.dropdown-menu #open-map').click(function() {
+        window.location.href = '/open-map';
+    });
+
 });

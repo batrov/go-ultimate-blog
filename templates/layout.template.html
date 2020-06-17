@@ -15,6 +15,10 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">  
     <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/about.css">
+    {{ else if eq ( $content ) "get_openmap_index.template" }} 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/openmap.css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
     {{ end }}
 </head>
 
@@ -31,6 +35,8 @@
         {{ template "get_retirementcalc_index.template" . }} 
     {{ else if eq ( $content ) "get_iganalyzer_index.template" }} 
         {{ template "get_iganalyzer_index.template" . }} 
+    {{ else if eq ( $content ) "get_openmap_index.template" }} 
+        {{ template "get_openmap_index.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}

@@ -9,6 +9,7 @@ import (
 	"github.com/Batrov/go-ultimate-blog/handlers/goquiz"
 	"github.com/Batrov/go-ultimate-blog/handlers/home"
 	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
+	"github.com/Batrov/go-ultimate-blog/handlers/openmap"
 	"github.com/Batrov/go-ultimate-blog/handlers/retirementcalc"
 	"github.com/julienschmidt/httprouter"
 )
@@ -41,6 +42,9 @@ func initRouter() {
 
 	// Insta Analyzer
 	router.GET("/instagram-analyzer", iganalyzer.GetIndex)
+
+	// Open Map
+	router.GET("/open-map", openmap.GetIndex)
 
 	log.Fatal(http.ListenAndServe(commons.GetPort(), router))
 }
