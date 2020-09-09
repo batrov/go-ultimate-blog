@@ -3,7 +3,6 @@ package commons
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"os"
 
@@ -41,17 +40,16 @@ func GetTemplate() *template.Template {
 	return template.Must(template.New("").ParseGlob("templates/*"))
 }
 
+func redirectToHttps(w http.ResponseWriter, r *http.Request) {
+	// Redirect the incoming HTTP request. Note that "127.0.0.1:443" will only work if you are accessing the server from your local machine.
+	http.Redirect(w, r, "https://"+r.Host+r.RequestURI, http.StatusMovedPermanently)
+}
+
 func Middleware(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 		if GetEnv() == "production" && r.TLS == nil {
-			// remove/add not default ports from req.Host
-			target := "https://" + r.Host + r.URL.Path
-			if len(r.URL.RawQuery) > 0 {
-				target += "?" + r.URL.RawQuery
-			}
-			log.Printf("redirect to: %s", target)
-			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
+			redirectToHttps(w, r)
 		}
 
 		next(w, r, ps)
