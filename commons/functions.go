@@ -3,6 +3,7 @@ package commons
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 
@@ -43,8 +44,14 @@ func GetTemplate() *template.Template {
 func Middleware(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
-		if GetEnv() == "production" {
-			r.URL.Scheme = "https"
+		if GetEnv() == "production" && r.Proto == "HTTP/1.1" {
+			// remove/add not default ports from req.Host
+			target := "https://" + r.Host + r.URL.Path
+			if len(r.URL.RawQuery) > 0 {
+				target += "?" + r.URL.RawQuery
+			}
+			log.Printf("redirect to: %s", target)
+			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
 		}
 
 		next(w, r, ps)
