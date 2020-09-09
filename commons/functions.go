@@ -44,7 +44,7 @@ func GetTemplate() *template.Template {
 func Middleware(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
-		if GetEnv() == "production" && r.Proto == "HTTP/1.1" {
+		if GetEnv() == "production" && r.TLS == nil {
 			// remove/add not default ports from req.Host
 			target := "https://" + r.Host + r.URL.Path
 			if len(r.URL.RawQuery) > 0 {
