@@ -21,9 +21,10 @@ func main() {
 
 func initRouter() {
 	router := httprouter.New()
+
 	router.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 
-	router.GET("/", home.GetIndex)
+	router.GET("/", commons.Middleware(home.GetIndex))
 	router.GET("/about", home.GetAbout)
 
 	// Go Quiz

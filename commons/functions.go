@@ -3,7 +3,11 @@ package commons
 import (
 	"fmt"
 	"html/template"
+	"log"
+	"net/http"
 	"os"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 func GetPort() string {
@@ -12,6 +16,10 @@ func GetPort() string {
 		return ":" + p
 	}
 	return ":8080"
+}
+
+func GetEnv() string {
+	return os.Getenv("MYENV")
 }
 
 // PrintErr function
@@ -31,4 +39,21 @@ func GetTemplatePath(templateName string) string {
 
 func GetTemplate() *template.Template {
 	return template.Must(template.New("").ParseGlob("templates/*"))
+}
+
+func Middleware(next httprouter.Handle) httprouter.Handle {
+	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+
+		if GetEnv() == "production" {
+			// remove/add not default ports from req.Host
+			target := "https://" + r.Host + r.URL.Path
+			if len(r.URL.RawQuery) > 0 {
+				target += "?" + r.URL.RawQuery
+			}
+			log.Printf("redirect to: %s", target)
+			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
+		}
+
+		next(w, r, ps)
+	}
 }
