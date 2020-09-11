@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"os"
 
@@ -52,10 +51,6 @@ func Middleware(next httprouter.Handle) httprouter.Handle {
 
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
-		log.Println("Scheme:", r.URL.Scheme)
-		log.Println("Proto:", r.Proto)
-		log.Println("TLS:", r.TLS)
-
 		ctxKey := fmt.Sprintf("is-https-%s%s", r.Host, r.URL.Path)
 
 		if GetEnv() == "production" && ctx.Value(ctxKey) != "1" {
@@ -63,10 +58,8 @@ func Middleware(next httprouter.Handle) httprouter.Handle {
 			if len(r.URL.RawQuery) > 0 {
 				target += "?" + r.URL.RawQuery
 			}
-			log.Printf("redirect to: %s", target)
 
 			ctx = context.WithValue(ctx, ctxKey, "1")
-			log.Println("ctx set")
 
 			r = r.WithContext(ctx)
 
