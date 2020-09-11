@@ -29,7 +29,7 @@ func initRouter() {
 
 	// Go Quiz
 	router.GET("/goquiz", commons.Middleware(goquiz.GetIndex))
-	router.GET("/goquiz/survey", commons.Middleware(goquiz.GetSurvey))
+	router.GET("/goquiz/survey", goquiz.GetSurvey)
 	router.POST("/goquiz/survey", commons.Middleware(goquiz.PostSurvey))
 	router.GET("/goquiz/quiz", commons.Middleware(goquiz.GetQuiz))
 	router.POST("/goquiz/reset-answer", commons.Middleware(goquiz.PostResetAnswer))
