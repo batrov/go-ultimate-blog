@@ -1,11 +1,13 @@
 package commons
 
 import (
+	"context"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -42,14 +44,20 @@ func GetTemplate() *template.Template {
 }
 
 func Middleware(next httprouter.Handle) httprouter.Handle {
-	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
-		if GetEnv() == "production" && r.TLS == nil {
+	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+		ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+		defer cancel()
+
+		if GetEnv() == "production" && ctx.Value("is-https") != "1" {
 			target := "https://" + r.Host + r.URL.Path
 			if len(r.URL.RawQuery) > 0 {
 				target += "?" + r.URL.RawQuery
 			}
 			log.Printf("redirect to: %s", target)
+
+			ctx = context.WithValue(ctx, "is-https", "1")
+			r = r.WithContext(ctx)
 
 			http.Redirect(w, r, target, http.StatusTemporaryRedirect)
 			return
