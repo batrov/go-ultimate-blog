@@ -24,6 +24,7 @@ func initRouter() {
 
 	router.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 
+	router.GET("/newhome", commons.Middleware(home.GetIndexV2))
 	router.GET("/", commons.Middleware(home.GetIndex))
 	router.GET("/about", commons.Middleware(home.GetAbout))
 

@@ -37,6 +37,8 @@
         {{ template "get_iganalyzer_index.template" . }} 
     {{ else if eq ( $content ) "get_openmap_index.template" }} 
         {{ template "get_openmap_index.template" . }} 
+    {{ else if eq ( $content ) "get_home2_index.template" }} 
+        {{ template "get_home2_index.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}
