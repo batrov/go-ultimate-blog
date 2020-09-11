@@ -25,26 +25,26 @@ func initRouter() {
 	router.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 
 	router.GET("/", commons.Middleware(home.GetIndex))
-	router.GET("/about", home.GetAbout)
+	router.GET("/about", commons.Middleware(home.GetAbout))
 
 	// Go Quiz
-	router.GET("/goquiz", goquiz.GetIndex)
-	router.GET("/goquiz/survey", goquiz.GetSurvey)
-	router.POST("/goquiz/survey", goquiz.PostSurvey)
-	router.GET("/goquiz/quiz", goquiz.GetQuiz)
-	router.POST("/goquiz/reset-answer", goquiz.PostResetAnswer)
-	router.GET("/goquiz/fetch-answer", goquiz.GetFetchAnswer)
+	router.GET("/goquiz", commons.Middleware(goquiz.GetIndex))
+	router.GET("/goquiz/survey", commons.Middleware(goquiz.GetSurvey))
+	router.POST("/goquiz/survey", commons.Middleware(goquiz.PostSurvey))
+	router.GET("/goquiz/quiz", commons.Middleware(goquiz.GetQuiz))
+	router.POST("/goquiz/reset-answer", commons.Middleware(goquiz.PostResetAnswer))
+	router.GET("/goquiz/fetch-answer", commons.Middleware(goquiz.GetFetchAnswer))
 
 	// Retirement Calculator
-	router.GET("/retirement-calculator", retirementcalc.GetIndex)
-	router.POST("/retirement-calculator/statistics", retirementcalc.PostStatistics)
-	router.GET("/retirement-calculator/statistics", retirementcalc.GetStatistics)
+	router.GET("/retirement-calculator", commons.Middleware(retirementcalc.GetIndex))
+	router.POST("/retirement-calculator/statistics", commons.Middleware(retirementcalc.PostStatistics))
+	router.GET("/retirement-calculator/statistics", commons.Middleware(retirementcalc.GetStatistics))
 
 	// Insta Analyzer
-	router.GET("/instagram-analyzer", iganalyzer.GetIndex)
+	router.GET("/instagram-analyzer", commons.Middleware(iganalyzer.GetIndex))
 
 	// Open Map
-	router.GET("/open-map", openmap.GetIndex)
+	router.GET("/open-map", commons.Middleware(openmap.GetIndex))
 
 	log.Fatal(http.ListenAndServe(commons.GetPort(), router))
 }
