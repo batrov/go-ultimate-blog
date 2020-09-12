@@ -243,6 +243,26 @@ hr {
   margin: 0;
   position: relative;
 }
+
+.portfolio-card {
+  display: block;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.portfolio-card.one {
+  background-color: linen;
+}
+
+.portfolio-card.two {
+  background-color: antiquewhite;
+}
+
+.portfolio-card.three {
+  background-color: cornsilk;
+}
+
 .portfolio-overlay {
   display: -webkit-box;
   display: -webkit-flex;

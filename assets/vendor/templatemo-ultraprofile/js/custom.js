@@ -53,6 +53,18 @@ jQuery(document).ready(function($) {
 
     }
 
+    $('.iso-box.goquiz').click(function() {
+        window.location.href = '/goquiz';
+    });
+
+    $('.iso-box.retcalc').click(function() {
+        window.location.href = '/retirement-calculator';
+    });
+
+    $('.iso-box.openmap').click(function() {
+        window.location.href = '/open-map';
+    });
+
 });
 
 
