@@ -50,16 +50,18 @@ $(document).ready(function() {
     function doCalculate() {
         let age, lifespan, income, expenses, inflation
 
-        age = parseInt($("#age").val())
-        lifespan = parseInt($("#lifespan").val())
-        income = parseFloat($("#income").val())
-        expenses = parseFloat($("#expenses").val())
-        inflation = parseFloat($("#inflation").val())
+        age = parseInt($("#age").val()) || 0
+        lifespan = parseInt($("#lifespan").val()) || 0
+        income = parseFloat($("#income").val()) || 0
+        expenses = parseFloat($("#expenses").val()) || 0
+        inflation = parseFloat($("#inflation").val()) || 0
         currency = $("#currency").val()
-        raise = parseFloat($("#raise").val())
+        raise = parseFloat($("#raise").val()) || 0
         advancedMode = $("#advanced").val() == "1"
-        investments = parseFloat($("#investments").val())
-        returns = parseFloat($("#returns").val())
+        investments = parseFloat($("#investments").val()) || 0
+        returns = parseFloat($("#returns").val()) || 0
+        savings = parseFloat($("#savings").val()) || 0
+        savingsInterests = parseFloat($("#savings-interests").val()) || 0
 
         workingYear = lifespan - age
         yearlyExpenses = expenses * 12
@@ -68,6 +70,7 @@ $(document).ready(function() {
         lifetimeIncome = 0
         workingMonth = 0
         routineInvestment = investments
+        savingsInterestsSum = 0
 
         for (i = 0; i < workingYear; i++) {
             yearlyExpenses = yearlyExpenses + (inflation / 100 * yearlyExpenses)
@@ -83,6 +86,8 @@ $(document).ready(function() {
         for (i = 0; i < workingYear * 12; i++) {
             workingMonth++
             raisedIncome = raisedIncome * (100 + (raise / 12)) / 100
+            savingsInterestsSum = savingsInterests / 100 * savings
+            savings += savingsInterestsSum
             lifetimeIncome += raisedIncome
 
             if (advancedMode) {
@@ -92,7 +97,7 @@ $(document).ready(function() {
                 lifetimeIncome += investmentsProfits
             }
 
-            if (lifetimeIncome >= lifetimeExpenses) {
+            if (lifetimeIncome + savings >= lifetimeExpenses) {
                 break
             }
         }
@@ -111,7 +116,7 @@ $(document).ready(function() {
             $('#result-retire').removeClass("text-danger")
             $('#result-retire').addClass("text-success")
 
-            savings = lifetimeIncome - lifetimeExpenses
+            savings = lifetimeIncome - lifetimeExpenses + savings
 
             resultRetireSummary = `You will have total income of ${lifetimeIncome.toLocaleString()} ${currency} and save ${savings.toLocaleString()} ${currency} when you die at age ${lifespan}`
 
