@@ -1,0 +1,13 @@
+.result-table {
+    border: double;
+    width: 100%;
+}
+
+.result-data {
+    width: 50%;
+    padding: 1rem;
+}
+
+.result-wrapper {
+    text-align: left;
+}

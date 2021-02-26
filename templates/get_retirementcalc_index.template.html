@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="raise">Income Raise per Year (%): </label>
-                        <input type="number" class="form-control" id="raise" placeholder="e.g. 10" value="0" min="0">        
+                        <input type="number" class="form-control" id="raise" placeholder="e.g. 10" value="10" min="0">        
                     </div>
                 </div>           
                 <br />
@@ -130,9 +130,36 @@
         <div class="result-wrapper">
             <br>
             <h3>Result:</h3>
-            <h3 id="result-retire"></h3>
-            <h3 id="result"></h3>
-            <h3 id="result-retire-summary"></h3>
+            <table class="result-table">
+                <tr>
+                    <td class="result-data"><h4>Retirement age: </h4></td>
+                    <td class="result-data" id="result-retired-age"></td>
+                </tr>
+                <tr>
+                    <td class="result-data"><h4>Total work time: </h4></td>
+                    <td class="result-data" id="result-work-time"></td>
+                </tr>
+                <tr>
+                    <td class="result-data"><h4>Total lifetime expenses: </h4></td>
+                    <td class="result-data" id="result-lifetime-expenses"></td>
+                </tr>
+                <tr>
+                    <td class="result-data"><h4>Total lifetime income: </h4></td>
+                    <td class="result-data" id="result-lifetime-income"></td>
+                </tr>
+                <tr class="result-can-retire">
+                    <td class="result-data"><h4>Remaining savings: </h4></td>
+                    <td class="result-data text-success" id="result-lifetime-savings"></td>
+                </tr>
+                <tr class="result-cannot-retire">
+                    <td class="result-data"><h4>Remaining debts: </h4></td>
+                    <td class="result-data text-danger" id="result-remaining-debts"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="donation-wrapper">
+            <p>We run on donations. You want to <a href="/donate">support us</a>?</p>
         </div>
 
     </div>

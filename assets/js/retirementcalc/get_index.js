@@ -102,38 +102,44 @@ $(document).ready(function() {
             }
         }
 
-        yearOfWork = Math.floor(workingMonth / 12) + " year"
-        monthOfWork = workingMonth % 12 + " month"
+        yearOfWork = Math.floor(workingMonth / 12) + " year(s)"
+        monthOfWork = workingMonth % 12 + " month(s)"
 
-        result = `You have to work for ${yearOfWork + " " + monthOfWork} to cover your ${lifetimeExpenses.toLocaleString()} ${currency} lifetime expenses.`
-        $('#result').text(result)
-
+        $('#result-work-time').text(yearOfWork + " " + monthOfWork)
+        $('#result-lifetime-expenses').text(lifetimeExpenses.toLocaleString() + " " + currency)
+        
         resultRetire = ""
         resultRetireSummary = ""
 
         if (parseInt(age) + parseInt(yearOfWork) < parseInt(lifespan)) {
-            resultRetire = `Retired at age ${parseInt(age) + parseInt(yearOfWork)}`
-            $('#result-retire').removeClass("text-danger")
-            $('#result-retire').addClass("text-success")
+            resultRetire = parseInt(age) + parseInt(yearOfWork)
+            $('#result-retired-age').removeClass("text-danger")
+            $('#result-retired-age').addClass("text-success")
+            $('.result-cannot-retire').hide()
+            $('.result-can-retire').show()
 
             savings = lifetimeIncome - lifetimeExpenses + savings
 
             resultRetireSummary = `You will have total income of ${lifetimeIncome.toLocaleString()} ${currency} and save ${savings.toLocaleString()} ${currency} when you die at age ${lifespan}`
-
+            $('#result-lifetime-savings').text(savings.toLocaleString() + " " + currency)
         } else {
             resultRetire = `Cannot retire in your entire lifetime`
-            $('#result-retire').removeClass("text-success")
-            $('#result-retire').addClass("text-danger")
+            $('#result-retired-age').removeClass("text-success")
+            $('#result-retired-age').addClass("text-danger")
+            $('.result-cannot-retire').show()
+            $('.result-can-retire').hide()
 
             lifetimeIncome = workingYear * 12 * income
 
             debt = lifetimeExpenses - lifetimeIncome
 
             resultRetireSummary = `You will die at age ${lifespan} with debt of ${debt.toLocaleString()} ${currency}`
+
+            $('#result-remaining-debts').text(debt.toLocaleString() + " " + currency)
         }
 
-        $('#result-retire').text(resultRetire)
-        $('#result-retire-summary').text(resultRetireSummary)
+        $('#result-retired-age').text(resultRetire)
+        $('#result-lifetime-income').text(lifetimeIncome.toLocaleString() + " " + currency)
 
     }
 });
