@@ -3,11 +3,30 @@
     width: 100%;
 }
 
+.result-table-positive {
+    background-color: azure;
+}
+
+.result-table-negative {
+    background-color: bisque;
+}
+
 .result-data {
-    width: 50%;
+    width: 30%;
+    padding: 1rem;
+}
+
+.result-data2 {
+    width: 70%;
     padding: 1rem;
 }
 
 .result-wrapper {
     text-align: left;
+}
+
+.header-style {
+    background-color: cornsilk;
+    padding: 16px;
+    border-style: inset;
 }

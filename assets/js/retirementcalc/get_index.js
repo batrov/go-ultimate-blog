@@ -11,14 +11,14 @@ $(document).ready(function() {
             $("#advanced").val("1")
             $('#btn-advanced').removeClass("btn-warning")
             $('#btn-advanced').addClass("btn-info")
-            $('#btn-advanced').text("Advanced Mode: True")
+            $('#btn-advanced').text("Simple Mode")
 
             $('.advanced-wrapper').show()
         } else {
             $("#advanced").val("0")
             $('#btn-advanced').removeClass("btn-info")
             $('#btn-advanced').addClass("btn-warning")
-            $('#btn-advanced').text("Advanced Mode: False")
+            $('#btn-advanced').text("Advanced Mode")
 
             $('.advanced-wrapper').hide()
         }
@@ -115,6 +115,8 @@ $(document).ready(function() {
             resultRetire = parseInt(age) + parseInt(yearOfWork)
             $('#result-retired-age').removeClass("text-danger")
             $('#result-retired-age').addClass("text-success")
+            $('.result-table').addClass("result-table-positive")
+            $('.result-table').removeClass("result-table-negative")
             $('.result-cannot-retire').hide()
             $('.result-can-retire').show()
 
@@ -126,6 +128,8 @@ $(document).ready(function() {
             resultRetire = `Cannot retire in your entire lifetime`
             $('#result-retired-age').removeClass("text-success")
             $('#result-retired-age').addClass("text-danger")
+            $('.result-table').removeClass("result-table-positive")
+            $('.result-table').addClass("result-table-negative")
             $('.result-cannot-retire').show()
             $('.result-can-retire').hide()
 
