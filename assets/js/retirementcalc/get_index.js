@@ -173,7 +173,7 @@ $(document).ready(function() {
         }
 
         if ($(this).val().length < 1) {
-            value = "0";
+            $(this).val("0");
         }
 
         var floatVal = parseFloat($(this).val())
