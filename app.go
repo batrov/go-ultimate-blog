@@ -27,6 +27,7 @@ func initRouter() {
 	router.GET("/", commons.Middleware(home.GetIndexV2))
 	router.GET("/about", commons.Middleware(home.GetAbout))
 	router.POST("/contact", commons.Middleware(home.PostContact))
+	router.GET("/donate", commons.Middleware(home.GetDonate))
 
 	// Go Quiz
 	router.GET("/goquiz", commons.Middleware(goquiz.GetIndex))

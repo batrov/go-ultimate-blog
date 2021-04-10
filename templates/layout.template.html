@@ -41,6 +41,8 @@
         {{ template "get_openmap_index.template" . }} 
     {{ else if eq ( $content ) "get_home2_index.template" }} 
         {{ template "get_home2_index.template" . }} 
+    {{ else if eq ( $content ) "get_home_donate.template" }} 
+        {{ template "get_home_donate.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}
