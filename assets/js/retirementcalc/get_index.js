@@ -1,3 +1,5 @@
+var allowedNumberInput = ["1","2","3","4","5","6","7","8","9","0",".","Backspace","ArrowLeft","ArrowUp","ArrowRight","ArrowDown","Delete"];
+
 $(document).ready(function() {
     doCalculate()
 
@@ -146,6 +148,39 @@ $(document).ready(function() {
         $('#result-lifetime-income').text(lifetimeIncome.toLocaleString() + " " + currency)
 
     }
+    
+
+    $(".custom-form-input").keydown(function(e) {
+        var isAllowed = allowedNumberInput.includes(e.key)
+
+        if (e.key == ".") {
+            isAllowed = !$(this).val().includes(e.key)
+        }
+
+        if (!isAllowed) {
+            e.preventDefault();
+        }
+    });
+
+    $(".custom-form-input").keyup(function(e) {
+        var key = $(this).attr('id').substring(5);
+        $(this).val($(this).val().replace(/,/g, ""));
+
+        if ($(this).val().length > 1) {
+            while ($(this).val()[0] == "0") {
+                $(this).val($(this).val().substring(1));
+            }
+        }
+
+        if ($(this).val().length < 1) {
+            value = "0";
+        }
+
+        var floatVal = parseFloat($(this).val())
+
+        $(`#${key}`).val(floatVal);
+        $(this).val(addCommas($(this).val()));
+    });
 });
 
 function sendStatistics() {
@@ -182,3 +217,9 @@ function sendStatistics() {
 window.addEventListener("beforeunload", function(e) {
     sendStatistics()
 }, false);
+
+function addCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+}
