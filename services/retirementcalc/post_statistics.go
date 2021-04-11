@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
 )
@@ -14,6 +15,8 @@ func PostStatistics(params commons.RetirementCalcPostStatisticsRequest, createFi
 		err       error
 		statsData []commons.RetirementCalcPostStatisticsRequest
 	)
+
+	params.Timestamp = time.Now().String()
 
 	jsonFile, err := os.Open(commons.RetirementCalcJsonPath)
 	if err != nil {

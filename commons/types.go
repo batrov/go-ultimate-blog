@@ -55,15 +55,17 @@ type PostCalculateRetirementCalcResponse struct {
 }
 
 type RetirementCalcPostStatisticsRequest struct {
-	Age           int64   `json:"age"`
-	Lifespan      int64   `json:"lifespan"`
-	Income        float64 `json:"income"`
-	Expenses      float64 `json:"expenses"`
-	Inflation     float64 `json:"inflation"`
-	Currency      string  `json:"currency"`
-	Raise         float64 `json:"raise"`
-	AdvancedMode  bool    `json:"advanced_mode"`
-	Investments   float64 `json:"investments"`
-	Returns       float64 `json:"returns"`
-	OtherExpenses int64   `json:"other_expenses"`
+	Timestamp      string  `json:"timestamp"`
+	Age            int64   `json:"age"`
+	Lifespan       int64   `json:"lifespan"`
+	Income         float64 `json:"income"`
+	Expenses       float64 `json:"expenses"`
+	Inflation      float64 `json:"inflation"`
+	Currency       string  `json:"currency"`
+	Raise          float64 `json:"raise"`
+	AdvancedMode   bool    `json:"advanced_mode"`
+	Investments    float64 `json:"investments"`
+	Returns        float64 `json:"returns"`
+	OtherExpenses  int64   `json:"other_expenses"`
+	CurrentSavings float64 `json:"current_savings"`
 }

@@ -202,6 +202,7 @@ function sendStatistics() {
         investments: parseFloat($("#investments").val()),
         returns: parseFloat($("#returns").val()),
         other_expenses: parseInt(otherExpenses),
+        current_savings: parseFloat($("#savings").val()),
     }
 
     var xhttp = new XMLHttpRequest();
