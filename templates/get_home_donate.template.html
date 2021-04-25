@@ -6,83 +6,40 @@
     <hr>
     <img src="https://cryptologos.cc/logos/versions/bitcoin-btc-logo-full.svg?v=010" alt="BTC Wallet" style="width: 200px;">
     <p>Select Network:</p>
-    <a class="btn btn-success" data-toggle="collapse" href="#collapse-btc" role="button" aria-expanded="false" aria-controls="collapse-btc">
+
+    <a class="btn btn-success btn-btc-network" id="btc">
         BTC
     </a>
-    <div class="collapse mb-3 mt-3" id="collapse-btc">
-        <div class="card card-body">
-            <h5>BTC</h5>
-            <div>
-                Deposit Address:
-                <div class="card" style="background-color: ivory;">
-                    1BN7jvbUpe9vvfUU7VU7L1dMydVgYUirr1
-                </div>
-            </div>
-        </div>
-    </div>  
 
-    <a class="btn btn-success" data-toggle="collapse" href="#collapse-bep2" role="button" aria-expanded="false" aria-controls="collapse-bep2">
+    <a class="btn btn-success btn-btc-network" id="bep2">
         BEP2
     </a>
-    <div class="collapse mb-3 mt-3" id="collapse-bep2">
-        <div class="card card-body">
-            <h5>BEP2</h5>
-            <div>
-                Memo:
-                <div class="card" style="background-color: ivory;">
-                    103482971
-                </div>
-            </div>
-            <div>
-                Deposit Address:
-                <div class="card" style="background-color: ivory;">
-                    bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <a class="btn btn-success" data-toggle="collapse" href="#collapse-bep20-bsc" role="button" aria-expanded="false" aria-controls="collapse-bep20-bsc">
+    <a class="btn btn-success btn-btc-network" id="bep20-bsc">
         BEP20 (BSC)
     </a>
-    <div class="collapse mb-3 mt-3" id="collapse-bep20-bsc">
-        <div class="card card-body">
-            <h5>BEP20 (BSC)</h5>
-            <div>
-                Deposit Address:
-                <div class="card" style="background-color: ivory;">
-                    0x5d99372ba4418e9fe450b9fbd8e256bdf4cf5160
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <a class="btn btn-success" data-toggle="collapse" href="#collapse-erc20" role="button" aria-expanded="false" aria-controls="collapse-erc20">
+    <a class="btn btn-success btn-btc-network" id="erc20">
         ERC20
     </a>
-    <div class="collapse mb-3 mt-3" id="collapse-erc20">
-        <div class="card card-body">
-            <h5>ERC20</h5> 
-            <div>
-                Deposit Address:
-                <div class="card" style="background-color: ivory;">
-                    0x5d99372ba4418e9fe450b9fbd8e256bdf4cf5160
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <a class="btn btn-success" data-toggle="collapse" href="#collapse-btc-segwit" role="button" aria-expanded="false" aria-controls="collapse-btc-segwit">
+    <a class="btn btn-success btn-btc-network" id="btc-segwit">
         BTC (SegWit)
     </a>
-    <div class="collapse mb-3 mt-3" id="collapse-btc-segwit">
-        <div class="card card-body">
-            <h5>BTC (SegWit)</h5> 
-            <div>
-                Deposit Address:
-                <div class="card" style="background-color: ivory;">
-                    bc1q0xvtwjgz72ahmjj3jmymq57lk5m8aajkhdlcv5
-                </div>
+
+    <div class="mb-3 mt-3 card card-body card-network">
+        <h5 class="card-network-title"></h5>
+        <div class="card-network-memo">
+            Memo:
+            <div class="card card-network-memo-value" style="background-color: ivory;">
+                MEMO VALUE
+            </div>
+        </div>
+
+        <div class="card-network-deposit-address">
+            Deposit Address:
+            <div class="card card-network-deposit-address-value" style="background-color: ivory;">
+                DEPOSIT VALUE
             </div>
         </div>
     </div>
