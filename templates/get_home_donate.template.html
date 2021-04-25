@@ -7,40 +7,42 @@
     <img src="https://cryptologos.cc/logos/versions/bitcoin-btc-logo-full.svg?v=010" alt="BTC Wallet" style="width: 200px;">
     <p>Select Network:</p>
 
-    <a class="btn btn-success btn-btc-network" id="btc">
-        BTC
-    </a>
-
-    <a class="btn btn-success btn-btc-network" id="bep2">
-        BEP2
-    </a>
-
-    <a class="btn btn-success btn-btc-network" id="bep20-bsc">
-        BEP20 (BSC)
-    </a>
-
-    <a class="btn btn-success btn-btc-network" id="erc20">
-        ERC20
-    </a>
-
-    <a class="btn btn-success btn-btc-network" id="btc-segwit">
-        BTC (SegWit)
-    </a>
+    <div class="btn-btc-wrapper">
+    </div>
 
     <div class="mb-3 mt-3 card card-body card-network">
         <h5 class="card-network-title"></h5>
         <div class="card-network-memo">
             Memo:
-            <div class="card card-network-memo-value" style="background-color: ivory;">
-                MEMO VALUE
+            <div class="row">
+                <div class="card card-network-memo-value col-10" style="padding: .375rem .75rem; background-color: ivory;">
+                    MEMO VALUE
+                </div>
+                <button type="button" class="btn btn-warning col-2 copy-card-network-memo-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"></path>
+                    </svg>
+                    Copy
+                </button>
+
             </div>
         </div>
 
         <div class="card-network-deposit-address">
             Deposit Address:
-            <div class="card card-network-deposit-address-value" style="background-color: ivory;">
-                DEPOSIT VALUE
-            </div>
+            <div class="row">
+                <div class="card card-network-deposit-address-value col-10" style="padding: .375rem .75rem; background-color: ivory;">
+                    DEPOSIT VALUE
+                </div>
+                <button type="button" class="btn btn-warning col-2 copy-card-network-deposit-address-value">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"></path>
+                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"></path>
+                    </svg>
+                    Copy
+                </button>
+        </div>
         </div>
     </div>
 
