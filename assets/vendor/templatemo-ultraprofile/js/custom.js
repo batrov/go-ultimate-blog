@@ -66,7 +66,7 @@ jQuery(document).ready(function($) {
     });
 
     $('#blog-0').click(function() {
-        window.location.href = '/blog/golang-unit-test-tutorial-for-beginner-using-vscode';
+        window.location.href = '/blog/en/golang-unit-test-tutorial-for-beginner-using-vscode';
     });
 
 });

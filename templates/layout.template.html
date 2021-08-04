@@ -45,6 +45,8 @@
         {{ template "get_home2_index.template" . }} 
     {{ else if eq ( $content ) "get_home_donate.template" }} 
         {{ template "get_home_donate.template" . }} 
+    {{ else if eq ( $content ) "blog-0-en.template" }} 
+        {{ template "blog-0-en.template" . }} 
     {{ else }}
         <h1>404</h1>
     {{ end }}

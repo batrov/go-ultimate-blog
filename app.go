@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
+	"github.com/Batrov/go-ultimate-blog/handlers/blog"
 	"github.com/Batrov/go-ultimate-blog/handlers/goquiz"
 	"github.com/Batrov/go-ultimate-blog/handlers/home"
 	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
@@ -47,6 +48,9 @@ func initRouter() {
 
 	// Open Map
 	router.GET("/open-map", commons.Middleware(openmap.GetIndex))
+
+	// Blogs
+	router.GET("/blog/:lang/:name", commons.Middleware(blog.GetIndex))
 
 	log.Fatal(http.ListenAndServe(commons.GetPort(), router))
 }
