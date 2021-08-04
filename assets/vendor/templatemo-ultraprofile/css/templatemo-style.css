@@ -516,3 +516,7 @@ input { height: 50px; }
   .navbar-default .navbar-brand {  padding-top: 2px; }
 }
 /* END MEDIA 360 */
+
+.cursor-pointer {
+  cursor: pointer;
+}

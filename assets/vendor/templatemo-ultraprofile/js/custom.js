@@ -65,6 +65,10 @@ jQuery(document).ready(function($) {
         window.location.href = '/open-map';
     });
 
+    $('#blog-0').click(function() {
+        window.location.href = '/blog/golang-unit-test-tutorial-for-beginner-using-vscode';
+    });
+
 });
 
 
