@@ -2,10 +2,12 @@
 
 <div class="p-5">
     <h1>Golang Unit Test Tutorial for Beginner using VSCode</h1>
+    <hr>
     <p>
         Unit test is one of the most essentials part in Software Engineering. It's prevent your stable code from breaking, allow you to test your function seamlessly, and deepen your code knowledge. For big company, high unit test coverage is a must have for deployment pre-requisite. <br>Disclaimer: This tutorial is <b>beginner only</b> and don't expect any advanced technique.
     </p>
-
+    <br>
+    <br>
     <h2>Getting Started</h2>
     <p>Before we start, make sure you have installed latest <a href="https://golang.org/doc/install">Golang</a> and <a href="https://code.visualstudio.com/Download">VSCode</a> in your machine</p>
     <p>We use this setup during this tutorial:</p>
@@ -30,7 +32,8 @@
         </p>
     </div>
     <p>Next, install VSCode Golang Extension</p>
-    <img src="/assets/img/go-package.jpg" alt="go-package.jpg">
+    <img src="/assets/img/go-package.jpg" alt="go-package.jpg" style="max-width: 60vw;">
+    <br>
     <br>
     <br>
     <h2>Write Some Code</h2>
@@ -38,13 +41,13 @@
     <p>Write a function that you want to generate unit test for. For example</p>
     <div class="card p-2 bg-light">
         <textarea name="" id="" cols="30" rows="4" disabled>
-            func IsOdd(val int) bool {
+            func IsEven(val int) bool {
                 return val%2 == 0
             } 
         </textarea>
     </div>
     <br>
-    <p>Right click on <b>IsOdd</b> and you will see a list of options, choose <b>Go: Generate Unit Tests For Function</b></p>
+    <p>Right click on <b>IsEven</b> and you will see a list of options, choose <b>Go: Generate Unit Tests For Function</b></p>
     <img src="/assets/img/blog-0-1.PNG" alt="Go: Generate Unit Tests For Function">
     <br>
     <p>A new file will be generated with name <b>app_test.go</b></p>
@@ -54,7 +57,7 @@
 
             import "testing"
 
-            func TestIsOdd(t *testing.T) {
+            func TestIsEven(t *testing.T) {
                 type args struct {
                     val int
                 }
@@ -67,15 +70,53 @@
                 }
                 for _, tt := range tests {
                     t.Run(tt.name, func(t *testing.T) {
-                        if got := IsOdd(tt.args.val); got != tt.want {
-                            t.Errorf("IsOdd() = %v, want %v", got, tt.want)
+                        if got := IsEven(tt.args.val); got != tt.want {
+                            t.Errorf("IsEven() = %v, want %v", got, tt.want)
                         }
                     })
                 }
             } 
         </textarea>
     </div>
+    <br>
+    <p>Now, add several test case inside <b>// TODO: Add test cases.</b></p>
+    <div class="card p-2 bg-light">
+        <textarea name="" id="" cols="30" rows="10" disabled>
+            func TestIsEven(t *testing.T) {
+                type args struct {
+                    val int
+                }
+                tests := []struct {
+                    name string
+                    args args
+                    want bool
+                }{
+                    {"IsEvenTrue", args{val: 10}, true},
+                    {"IsEvenFalse", args{val: 1}, false},
+                }
+                for _, tt := range tests {
+                    t.Run(tt.name, func(t *testing.T) {
+                        if got := IsEven(tt.args.val); got != tt.want {
+                            t.Errorf("IsEven() = %v, want %v", got, tt.want)
+                        }
+                    })
+                }
+            }
+        </textarea>
+    </div>
+    <br>
+    <br>
 
+    <h3>Running Unit Test</h3>
+    <p>You can run your unit test with <b>go test [package path]</b>, or simply use <b>run test</b> above <b>TestIsEven</b></p>
+    <img src="/assets/img/blog-0-2.PNG" alt="blog-0-2.PNG" style="max-width: 60vw;">
+    <br>
+    <br>
+    <p><b>Voila!</b> you have created your first unit test.</p>
+    <br>
+    <br>
+
+    <a href="/">Go Home</a>
 </div>
 
 {{ end }}

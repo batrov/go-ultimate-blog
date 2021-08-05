@@ -72,3 +72,7 @@ func Middleware(next httprouter.Handle) httprouter.Handle {
 
 	}
 }
+
+func IsEven(val int) bool {
+	return val%2 == 0
+}
