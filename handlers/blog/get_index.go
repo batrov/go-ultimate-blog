@@ -18,6 +18,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 	switch name {
 	case "golang-unit-test-tutorial-for-beginner-using-vscode":
+		title = "Golang Unit Test Beginner Tutorial using VSCode"
 		if lang == "en" {
 			fileName = "blog-0-en.template"
 		} else {
