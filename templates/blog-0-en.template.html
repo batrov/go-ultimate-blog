@@ -29,6 +29,52 @@
             OS: Windows_NT x64 10.0.19042 
         </p>
     </div>
+    <p>Next, install VSCode Golang Extension</p>
+    <img src="/assets/img/go-package.jpg" alt="go-package.jpg">
+    <br>
+    <br>
+    <h2>Write Some Code</h2>
+    <p>Prepare go file, for example <b>app.go</b></p>
+    <p>Write a function that you want to generate unit test for. For example</p>
+    <div class="card p-2 bg-light">
+        <textarea name="" id="" cols="30" rows="4" disabled>
+            func IsOdd(val int) bool {
+                return val%2 == 0
+            } 
+        </textarea>
+    </div>
+    <br>
+    <p>Right click on <b>IsOdd</b> and you will see a list of options, choose <b>Go: Generate Unit Tests For Function</b></p>
+    <img src="/assets/img/blog-0-1.PNG" alt="Go: Generate Unit Tests For Function">
+    <br>
+    <p>A new file will be generated with name <b>app_test.go</b></p>
+    <div class="card p-2 bg-light">
+        <textarea name="" id="" cols="30" rows="10" disabled>
+            package main
+
+            import "testing"
+
+            func TestIsOdd(t *testing.T) {
+                type args struct {
+                    val int
+                }
+                tests := []struct {
+                    name string
+                    args args
+                    want bool
+                }{
+                    // TODO: Add test cases.
+                }
+                for _, tt := range tests {
+                    t.Run(tt.name, func(t *testing.T) {
+                        if got := IsOdd(tt.args.val); got != tt.want {
+                            t.Errorf("IsOdd() = %v, want %v", got, tt.want)
+                        }
+                    })
+                }
+            } 
+        </textarea>
+    </div>
 
 </div>
 
