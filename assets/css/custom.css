@@ -1,0 +1,21 @@
+.floater-navigator {
+    height: 100px; 
+    width: 100px; 
+    z-index: 999; 
+    position: fixed; 
+    bottom: 2vw; 
+    right: 2vw; 
+    border-radius: 50px;
+    background-color: #eb5424;
+    cursor: pointer;
+    animation-name: floater-navigator-anim;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+/* The animation code */
+@keyframes floater-navigator-anim {
+    0% {background-color: #eb5424; transform: scale(1);}
+    50% {background-color: #f87046; transform: scale(0.9);}
+    100% {background-color: #eb5424; transform: scale(1);}
+}
