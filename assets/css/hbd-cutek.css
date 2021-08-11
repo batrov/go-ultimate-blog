@@ -13,3 +13,52 @@
 body {
     font-size: 5vw;
 }
+
+.rainbow {
+    animation-name: rainbow-anim;
+    animation-duration: 100s;
+    animation-iteration-count: infinite;
+}
+
+.pantone {
+    animation-name: pantone-anim;
+    animation-duration: 100s;
+    animation-iteration-count: infinite;
+}
+
+/* The animation code */
+@keyframes rainbow-anim {
+    0% {background-color: #ffffff;}
+    5% {background-color: #ff0000;}
+    10% {background-color: #e5ff00;}
+    15% {background-color: #00ff00;}
+    20% {background-color: #00ffff;}
+    25% {background-color: #0026ff;}
+    25% {background-color: #c300ff;}
+    30% {background-color: #ff0077;}
+    35% {background-color: #ff0000;}
+    40% {background-color: #ff00ea;}
+    45% {background-color: #00ff62;}
+    50% {background-color: #c9f846;}
+    55% {background-color: #f8c946;}
+    60% {background-color: #f84646;}
+    65% {background-color: #cf775c;}
+    70% {background-color: #4f572e;}
+    75% {background-color: #78f846;}
+    80% {background-color: #46f2f8;}
+    85% {background-color: #4658f8;}
+    90% {background-color: #9946f8;}
+    95% {background-color: #f846b4;}
+    100% {background-color: #eb24db;}
+}
+
+/* The animation code */
+@keyframes pantone-anim {
+    0% {background-color: #ffffff;}
+    20% {background-color: #E9DB9C;}
+    40% {background-color: #FFC658;}
+    60% {background-color: #FFC845;}
+    80% {background-color: #FFB81C;}
+    90% {background-color: #C69214;}
+    100% {background-color: #ffffff;}
+}
