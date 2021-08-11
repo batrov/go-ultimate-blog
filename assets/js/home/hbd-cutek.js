@@ -36,7 +36,7 @@ function runningUcapan(audioSec) {
     } else if (audioSec > 147) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Dan makin sayang orang tua")
+        $('.ucapan').text("Dan makin sayang orang tua :)")
     } else if (audioSec > 144) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-left");
@@ -129,10 +129,12 @@ function runningUcapan(audioSec) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
         $('.ucapan').text("Kita bahas apapun yang kita suka ...")
+        $('.ucapan-img-1').hide();
     } else if (audioSec > 50) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(showing image of first chat)")
+        $('.ucapan').text("")
+        $('.ucapan-img-1').show();
     } else if (audioSec > 45) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-left");
