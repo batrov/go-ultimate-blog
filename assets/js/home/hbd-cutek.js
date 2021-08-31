@@ -18,17 +18,23 @@ function runningUcapan(audioSec) {
     var isFinished = false;
     if (audioSec > 166) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-bottom");
+        if (!$('.ucapan-final').is( ":visible" )) {
+            $('.ucapan-final').show();
+        }
         $('.ucapan').text("Happy Birthday Cutekk!!!")
+
         isFinished = true;
     } else if (audioSec > 160) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Show foto molly2")
+        $('.ucapan-img-13').show();
+        $('.ucapan-img-13').attr("display", "flex");
+        $('.ucapan-img-12').hide();
+
     } else if (audioSec > 155) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Show foto molly1")
+        $('.ucapan-img-12').show();
+        $('.ucapan').hide();
+
     } else if (audioSec > 150) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-bottom");
@@ -68,55 +74,82 @@ function runningUcapan(audioSec) {
     } else if (audioSec > 114) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-left");
+        if (!$('.ucapan').is( ":visible" )) {
+            $('.ucapan').show();
+        }
+        $('.ucapan-img-11').hide();
+
         $('.ucapan').text("Meski kadang kita salah paham ...")
     } else if (audioSec > 109) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Show mobile legends")
+        $('.ucapan-img-11').show();
+        $('.ucapan-img-10').hide();
+
     } else if (audioSec > 107) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Show hago")
+        $('.ucapan-img-10').show();
+        $('.ucapan-img-9').hide();
+
     } else if (audioSec > 105) {
         clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("Show overcooked")
+        $('.ucapan-img-9').show();
+        $('.ucapan').hide();
+
     } else if (audioSec > 100) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-bottom");
+        if (!$('.ucapan').is( ":visible" )) {
+            $('.ucapan').show();
+        }
+        $('.ucapan-img-8').hide();
         $('.ucapan').text("Kita juga habisin banyak waktu bersama :)")
     } else if (audioSec > 94) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show lulus sidang)")
+        $('.ucapan-img-7').hide();
+        $('.ucapan-img-8').show();
     } else if (audioSec > 92) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show yudisium)")
+        $('.ucapan-img-6').hide();
+        $('.ucapan-img-7').show();
     } else if (audioSec > 90) {
         clearAnimation();
+        $('.ucapan').hide();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show vidcall)")
+        $('.ucapan-img-6').show();
     } else if (audioSec > 85) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
+        if (!$('.ucapan').is( ":visible" )) {
+            $('.ucapan').show();
+        }
         $('.ucapan').text("Juga ada beberapa momen bersejarah :D")
+        $('.ucapan-img-5').hide();
+
     } else if (audioSec > 81) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show netflix money heist)")
+        $('.ucapan-img-4').hide();
+        $('.ucapan-img-5').show();
+
     } else if (audioSec > 79) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show netflix money heist)")
+        $('.ucapan-img-3').hide();
+        $('.ucapan-img-4').show();
+
     } else if (audioSec > 77) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show netflix money heist)")
+        $('.ucapan-img-2').hide();
+        $('.ucapan-img-3').show();
+
     } else if (audioSec > 75) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("(show netflix money heist)")
+        $('.ucapan').hide();
+        $('.ucapan-img-2').show();
     } else if (audioSec > 70) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-left");
@@ -128,12 +161,15 @@ function runningUcapan(audioSec) {
     } else if (audioSec > 60) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
+        if (!$('.ucapan').is( ":visible" )) {
+            $('.ucapan').show();
+        }
         $('.ucapan').text("Kita bahas apapun yang kita suka ...")
         $('.ucapan-img-1').hide();
     } else if (audioSec > 50) {
         clearAnimation();
         $('.ucapan').addClass("w3-animate-top");
-        $('.ucapan').text("")
+        $('.ucapan').hide();
         $('.ucapan-img-1').show();
     } else if (audioSec > 45) {
         clearAnimation();
@@ -149,13 +185,16 @@ function runningUcapan(audioSec) {
         $('.ucapan').text("Yuk sekarang kita flashback ke awal kita ketemu ...")
         $('.ucapan-img').hide();
     } else if (audioSec > 30) {
-        clearAnimation();
-        $('.ucapan').addClass("w3-animate-top");
+        clearAnimation();      
+        $('.ucapan').addClass("w3-animate-left");
+        if (!$('.ucapan').is( ":visible" )) {
+            $('.ucapan').show();
+        }
         $('.ucapan').text("Senyum dulu dong biar makin cantik :)")
         $('.ucapan-img').hide();
     } else if (audioSec > 27) {
         clearAnimation();
-        $('.ucapan').text("")
+        $('.ucapan').hide();
         $('.ucapan-img').show();
     } else if (audioSec > 25) {
         clearAnimation();
