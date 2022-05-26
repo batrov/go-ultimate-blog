@@ -1,19 +1,23 @@
 package services
 
 import (
-	"github.com/Batrov/go-ultimate-blog/repositories"
+	"github.com/Batrov/go-ultimate-blog/services/home"
 )
 
-type ServicesI interface {
-}
-
 type Services struct {
-	repositories repositories.RepositoriesI
+	HomeService home.HomeI
 }
 
-func Init() (ServicesI, error) {
-	repo, err := repositories.Init()
-	return &Services{
-		repositories: repo,
-	}, err
+var service Services
+
+func Init() error {
+	homeService, err := home.Init()
+	service = Services{
+		HomeService: homeService,
+	}
+	return err
+}
+
+func GetService() Services {
+	return service
 }

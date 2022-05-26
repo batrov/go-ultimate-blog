@@ -48,11 +48,8 @@ func GetTemplate() *template.Template {
 }
 
 func Middleware(next httprouter.Handle) httprouter.Handle {
-
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
 		ctxKey := fmt.Sprintf("is-https-%s%s", r.Host, r.URL.Path)
-
 		if GetEnv() == "production" && ctx.Value(ctxKey) != "1" {
 			target := "https://" + r.Host + r.URL.Path
 			if len(r.URL.RawQuery) > 0 {

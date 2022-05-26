@@ -12,6 +12,7 @@ import (
 	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
 	"github.com/Batrov/go-ultimate-blog/handlers/openmap"
 	"github.com/Batrov/go-ultimate-blog/handlers/retirementcalc"
+	"github.com/Batrov/go-ultimate-blog/services"
 	_ "github.com/joho/godotenv/autoload"
 	"github.com/julienschmidt/httprouter"
 )
@@ -23,7 +24,10 @@ func main() {
 }
 
 func initServer() {
-
+	err := services.Init()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func initRouter() {
