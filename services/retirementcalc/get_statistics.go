@@ -1,10 +1,6 @@
 package retirementcalc
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"os"
-
 	"github.com/Batrov/go-ultimate-blog/commons"
 )
 
@@ -15,19 +11,7 @@ func (s *RetirementCalc) GetStatistics() ([]commons.RetirementCalcPostStatistics
 		statsData []commons.RetirementCalcPostStatisticsRequest
 	)
 
-	jsonFile, err := os.Open(commons.RetirementCalcJsonPath)
-	if err != nil {
-		return statsData, commons.Error(err, "GS_00")
-	}
-
-	defer jsonFile.Close()
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	json.Unmarshal(byteValue, &statsData)
-
 	// get from DB
-	var newData []commons.RetirementCalcPostStatisticsRequest
 	data, err := s.repositories.RCalcStatsRepo.GetStatistics()
 	for _, v := range data {
 		singleData := commons.RetirementCalcPostStatisticsRequest{
@@ -46,8 +30,8 @@ func (s *RetirementCalc) GetStatistics() ([]commons.RetirementCalcPostStatistics
 			CurrentSavings: v.CurrentSavings,
 		}
 
-		newData = append(newData, singleData)
+		statsData = append(statsData, singleData)
 	}
 
-	return newData, err
+	return statsData, err
 }
