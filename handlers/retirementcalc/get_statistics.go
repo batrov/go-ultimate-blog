@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
-	"github.com/Batrov/go-ultimate-blog/services/retirementcalc"
+	"github.com/Batrov/go-ultimate-blog/services"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -18,7 +18,7 @@ func GetStatistics(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 		return
 	}
 
-	data, err := retirementcalc.GetStatistics()
+	data, err := services.GetService().RCalcService.GetStatistics()
 	if err != nil {
 		commons.PrintErr(err, "GS_00")
 	}

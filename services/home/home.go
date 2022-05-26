@@ -10,12 +10,12 @@ type HomeI interface {
 }
 
 type Home struct {
-	repositories repositories.RepositoriesI
+	repositories repositories.Repositories
 }
 
 func Init() (HomeI, error) {
-	repo, err := repositories.Init()
+	repo := repositories.Get()
 	return &Home{
 		repositories: repo,
-	}, err
+	}, nil
 }

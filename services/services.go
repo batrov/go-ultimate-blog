@@ -2,20 +2,30 @@ package services
 
 import (
 	"github.com/Batrov/go-ultimate-blog/services/home"
+	"github.com/Batrov/go-ultimate-blog/services/retirementcalc"
 )
 
 type Services struct {
-	HomeService home.HomeI
+	HomeService  home.HomeI
+	RCalcService retirementcalc.RetirementCalcI
 }
 
 var service Services
 
-func Init() error {
+func Init() (err error) {
 	homeService, err := home.Init()
-	service = Services{
-		HomeService: homeService,
+	if err != nil {
+		return
 	}
-	return err
+	rcalcService, err := retirementcalc.Init()
+	if err != nil {
+		return
+	}
+	service = Services{
+		HomeService:  homeService,
+		RCalcService: rcalcService,
+	}
+	return
 }
 
 func GetService() Services {

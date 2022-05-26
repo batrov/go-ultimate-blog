@@ -9,5 +9,5 @@ import (
 // PostContact Service
 func (s *Home) PostContact(params commons.Contact) (err error) {
 	params.CreatedAt = time.Now()
-	return s.repositories.PostContact(params)
+	return s.repositories.ContactRepo.PostContact(params)
 }

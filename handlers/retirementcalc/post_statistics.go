@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
-	"github.com/Batrov/go-ultimate-blog/services/retirementcalc"
+	"github.com/Batrov/go-ultimate-blog/services"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -21,7 +21,7 @@ func PostStatistics(w http.ResponseWriter, r *http.Request, _ httprouter.Params)
 		return
 	}
 
-	ok, err := retirementcalc.PostStatistics(postStatsRequest, true)
+	ok, err := services.GetService().RCalcService.PostStatistics(postStatsRequest, true)
 	if err != nil {
 		commons.PrintErr(err, "PS_00")
 	}
