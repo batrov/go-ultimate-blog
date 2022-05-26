@@ -22,6 +22,6 @@ func (r *RetirementCalc) PostStatistics(params commons.RCalcStatistic) (err erro
 
 func (r *RetirementCalc) GetStatistics() (params []commons.RCalcStatistic, err error) {
 	db := r.DB
-	db.Table("rcalc_statistics").Find(&params)
+	db.Table("rcalc_statistics").Order("created_at DESC").Find(&params)
 	return
 }
