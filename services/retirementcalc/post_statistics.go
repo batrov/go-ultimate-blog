@@ -1,7 +1,6 @@
 package retirementcalc
 
 import (
-	"log"
 	"time"
 
 	"github.com/Batrov/go-ultimate-blog/commons"
@@ -12,8 +11,6 @@ func (s *RetirementCalc) PostStatistics(params commons.RetirementCalcPostStatist
 		err error
 		now = time.Now()
 	)
-
-	log.Println("Start Post")
 
 	// insert to DB
 	err = s.repositories.RCalcStatsRepo.PostStatistics(commons.RCalcStatistic{
@@ -34,9 +31,6 @@ func (s *RetirementCalc) PostStatistics(params commons.RetirementCalcPostStatist
 	if err != nil {
 		return false, commons.Error(err, "PS_00")
 	}
-
-	log.Println("End Post")
-	log.Println(err)
 
 	return true, err
 }
