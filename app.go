@@ -12,6 +12,7 @@ import (
 	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
 	"github.com/Batrov/go-ultimate-blog/handlers/openmap"
 	"github.com/Batrov/go-ultimate-blog/handlers/retirementcalc"
+	_ "github.com/joho/godotenv/autoload"
 	"github.com/julienschmidt/httprouter"
 )
 
