@@ -17,8 +17,13 @@ import (
 )
 
 func main() {
+	initServer()
 	fmt.Printf("System running on http://localhost%s\n", commons.GetPort())
 	initRouter()
+}
+
+func initServer() {
+
 }
 
 func initRouter() {
