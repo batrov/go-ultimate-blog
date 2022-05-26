@@ -1,6 +1,6 @@
 # Hermawan's Go Ultimate Blog
 
-Use go version 1.14.3
+Use go version 1.18.2
 
 ### Build
 `go build`
