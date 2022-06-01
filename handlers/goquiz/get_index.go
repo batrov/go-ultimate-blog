@@ -38,6 +38,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		Contents: map[string]interface{}{
 			"Content":  fileName,
 			"FullName": response.FullName,
+			"Version":  commons.GetVersion(),
 		},
 	}
 

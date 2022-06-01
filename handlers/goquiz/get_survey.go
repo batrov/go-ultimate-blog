@@ -38,6 +38,7 @@ func GetSurvey(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 			"Question":         response.SurveyData.Question,
 			"SurveyID":         response.SurveyData.ID,
 			"SubmittedAnswers": "",
+			"Version":          commons.GetVersion(),
 		},
 	}
 

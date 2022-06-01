@@ -11,7 +11,7 @@ import (
 
 type Repositories struct {
 	ContactRepo    contact.ContactI
-	RCalcStatsRepo rcalc_statistics.RetirementCalcI
+	RCalcStatsRepo rcalc_statistics.FireCalcI
 }
 
 var repo Repositories
@@ -23,7 +23,7 @@ func Init() (err error) {
 		ContactRepo: &contact.Contact{
 			DB: db,
 		},
-		RCalcStatsRepo: &rcalc_statistics.RetirementCalc{
+		RCalcStatsRepo: &rcalc_statistics.FireCalc{
 			DB: db,
 		},
 	}

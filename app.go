@@ -7,11 +7,11 @@ import (
 
 	"github.com/Batrov/go-ultimate-blog/commons"
 	"github.com/Batrov/go-ultimate-blog/handlers/blog"
+	"github.com/Batrov/go-ultimate-blog/handlers/firecalc"
 	"github.com/Batrov/go-ultimate-blog/handlers/goquiz"
 	"github.com/Batrov/go-ultimate-blog/handlers/home"
 	"github.com/Batrov/go-ultimate-blog/handlers/iganalyzer"
 	"github.com/Batrov/go-ultimate-blog/handlers/openmap"
-	"github.com/Batrov/go-ultimate-blog/handlers/retirementcalc"
 	"github.com/Batrov/go-ultimate-blog/repositories"
 	"github.com/Batrov/go-ultimate-blog/services"
 	_ "github.com/joho/godotenv/autoload"
@@ -21,6 +21,7 @@ import (
 func main() {
 	initServer()
 	fmt.Printf("System running on http://localhost%s\n", commons.GetPort())
+	fmt.Printf("Version: %s\n", commons.GetVersion())
 	initRouter()
 }
 
@@ -54,10 +55,10 @@ func initRouter() {
 	router.POST("/goquiz/reset-answer", commons.Middleware(goquiz.PostResetAnswer))
 	router.GET("/goquiz/fetch-answer", commons.Middleware(goquiz.GetFetchAnswer))
 
-	// Retirement Calculator
-	router.GET("/retirement-calculator", commons.Middleware(retirementcalc.GetIndex))
-	router.POST("/retirement-calculator/statistics", commons.Middleware(retirementcalc.PostStatistics))
-	router.GET("/retirement-calculator/statistics", commons.Middleware(retirementcalc.GetStatistics))
+	// FIRE Calculator
+	router.GET("/fire-calculator", commons.Middleware(firecalc.GetIndex))
+	router.POST("/fire-calculator/statistics", commons.Middleware(firecalc.PostStatistics))
+	router.GET("/fire-calculator/statistics", commons.Middleware(firecalc.GetStatistics))
 
 	// Insta Analyzer
 	router.GET("/instagram-analyzer", commons.Middleware(iganalyzer.GetIndex))

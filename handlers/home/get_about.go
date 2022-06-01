@@ -23,6 +23,7 @@ func GetAbout(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		Title: "About Me",
 		Contents: map[string]interface{}{
 			"Content": fileName,
+			"Version": commons.GetVersion(),
 		},
 	}
 

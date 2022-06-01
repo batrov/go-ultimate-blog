@@ -2,6 +2,7 @@
 
 {{ $content := index .Contents "Content" }}
 {{ $jsfile := index .Contents "JS_File" }}
+{{ $version := index .Contents "Version" }}
 
 <html>
 
@@ -10,20 +11,20 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1319121893720169" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css?{{ $version }}">
     {{ if eq ( $content ) "get_home_index.template" }} 
-    <link rel="stylesheet" type="text/css" href="/assets/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/home.css?{{ $version }}">
     {{ else if eq ( $content ) "get_home_about.template" }} 
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">  
     <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/about.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/about.css?{{ $version }}">
     {{ else if eq ( $content ) "get_openmap_index.template" }} 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/openmap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/openmap.css?{{ $version }}">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
-    {{ else if eq ( $content ) "get_retirementcalc_index.template" }} 
-    <link rel="stylesheet" type="text/css" href="/assets/css/retirementcalc.css">
+    {{ else if eq ( $content ) "get_firecalc_index.template" }} 
+    <link rel="stylesheet" type="text/css" href="/assets/css/firecalc.css?{{ $version }}">
     {{ end }}
 </head>
 
@@ -36,8 +37,8 @@
         {{ template "get_goquiz_index.template" . }} 
     {{ else if eq ( $content ) "get_goquiz_survey.template" }} 
         {{ template "get_goquiz_survey.template" . }} 
-    {{ else if eq ( $content ) "get_retirementcalc_index.template" }} 
-        {{ template "get_retirementcalc_index.template" . }} 
+    {{ else if eq ( $content ) "get_firecalc_index.template" }} 
+        {{ template "get_firecalc_index.template" . }} 
     {{ else if eq ( $content ) "get_iganalyzer_index.template" }} 
         {{ template "get_iganalyzer_index.template" . }} 
     {{ else if eq ( $content ) "get_openmap_index.template" }} 
@@ -70,7 +71,7 @@
     {{ else if eq ( $content ) "get_goquiz_survey.template" }}
         <script src="/assets/js/goquiz/get_survey.js"></script>
     {{ else if ne ( $jsfile ) "" }}
-        <script src="/assets/js/{{ $jsfile }}"></script>
+        <script src="/assets/js/{{ $jsfile }}?{{ $version }}"></script>
     {{ end }}
 
 </body>

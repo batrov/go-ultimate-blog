@@ -1,4 +1,4 @@
-package retirementcalc
+package firecalc
 
 import (
 	"net/http"
@@ -15,15 +15,16 @@ func GetIndex(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	r.ParseForm()
 
-	fileName := "get_retirementcalc_index.template"
+	fileName := "get_firecalc_index.template"
 
 	t := commons.GetTemplate().Lookup(commons.TemplateLayoutName)
 
 	templateData := commons.TemplateData{
-		Title: "Retirement Calculator",
+		Title: "F.I.R.E. Calculator",
 		Contents: map[string]interface{}{
 			"Content": fileName,
-			"JS_File": "retirementcalc/get_index.js",
+			"JS_File": "firecalc/get_index.js",
+			"Version": commons.GetVersion(),
 		},
 	}
 

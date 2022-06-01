@@ -7,8 +7,8 @@ $(document).ready(function() {
         window.location.href = '/about';
     });
 
-    $('.dropdown-menu #retirement-calculator').click(function() {
-        window.location.href = '/retirement-calculator';
+    $('.dropdown-menu #fire-calculator').click(function() {
+        window.location.href = '/fire-calculator';
     });
 
     $('.dropdown-menu #open-map').click(function() {

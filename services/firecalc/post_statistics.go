@@ -1,4 +1,4 @@
-package retirementcalc
+package firecalc
 
 import (
 	"time"
@@ -6,7 +6,7 @@ import (
 	"github.com/Batrov/go-ultimate-blog/commons"
 )
 
-func (s *RetirementCalc) PostStatistics(params commons.RetirementCalcPostStatisticsRequest, createFile bool) (bool, error) {
+func (s *FireCalc) PostStatistics(params commons.FireCalcPostStatisticsRequest, createFile bool) (bool, error) {
 	var (
 		err error
 		now = time.Now()

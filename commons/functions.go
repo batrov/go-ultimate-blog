@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -72,4 +73,11 @@ func Middleware(next httprouter.Handle) httprouter.Handle {
 
 func IsEven(val int) bool {
 	return val%2 == 0
+}
+
+func GetVersion() string {
+	if len(os.Getenv("VERSION")) > 0 {
+		return os.Getenv("VERSION")
+	}
+	return fmt.Sprintf("%d", time.Now().Unix())
 }

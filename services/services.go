@@ -1,13 +1,13 @@
 package services
 
 import (
+	"github.com/Batrov/go-ultimate-blog/services/firecalc"
 	"github.com/Batrov/go-ultimate-blog/services/home"
-	"github.com/Batrov/go-ultimate-blog/services/retirementcalc"
 )
 
 type Services struct {
 	HomeService  home.HomeI
-	RCalcService retirementcalc.RetirementCalcI
+	RCalcService firecalc.FireCalcI
 }
 
 var service Services
@@ -17,7 +17,7 @@ func Init() (err error) {
 	if err != nil {
 		return
 	}
-	rcalcService, err := retirementcalc.Init()
+	rcalcService, err := firecalc.Init()
 	if err != nil {
 		return
 	}

@@ -1,20 +1,20 @@
-package retirementcalc
+package firecalc
 
 import (
 	"github.com/Batrov/go-ultimate-blog/commons"
 )
 
 // GetStatistics Service
-func (s *RetirementCalc) GetStatistics() ([]commons.RetirementCalcPostStatisticsRequest, error) {
+func (s *FireCalc) GetStatistics() ([]commons.FireCalcPostStatisticsRequest, error) {
 	var (
 		err       error
-		statsData []commons.RetirementCalcPostStatisticsRequest
+		statsData []commons.FireCalcPostStatisticsRequest
 	)
 
 	// get from DB
 	data, err := s.repositories.RCalcStatsRepo.GetStatistics()
 	for _, v := range data {
-		singleData := commons.RetirementCalcPostStatisticsRequest{
+		singleData := commons.FireCalcPostStatisticsRequest{
 			Timestamp:      v.CreatedAt.String(),
 			Age:            v.Age,
 			Lifespan:       v.Lifespan,

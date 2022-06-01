@@ -34,6 +34,7 @@ func GetIndex(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		Contents: map[string]interface{}{
 			"Content": fileName,
 			"JS_File": "",
+			"Version": commons.GetVersion(),
 		},
 	}
 

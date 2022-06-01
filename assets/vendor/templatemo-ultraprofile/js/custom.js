@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
     });
 
     $('.iso-box.retcalc').click(function() {
-        window.location.href = '/retirement-calculator';
+        window.location.href = '/fire-calculator';
     });
 
     $('.iso-box.openmap').click(function() {

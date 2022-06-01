@@ -47,14 +47,14 @@ type TemplateData struct {
 	Contents map[string]interface{}
 }
 
-type PostCalculateRetirementCalcParams struct {
+type PostCalculateFireCalcParams struct {
 	Age int64
 }
 
-type PostCalculateRetirementCalcResponse struct {
+type PostCalculateFireCalcResponse struct {
 }
 
-type RetirementCalcPostStatisticsRequest struct {
+type FireCalcPostStatisticsRequest struct {
 	Timestamp      string  `json:"timestamp"`
 	Age            int64   `json:"age"`
 	Lifespan       int64   `json:"lifespan"`

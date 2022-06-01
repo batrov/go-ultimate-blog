@@ -5,22 +5,22 @@ import (
 	"gorm.io/gorm"
 )
 
-type RetirementCalcI interface {
+type FireCalcI interface {
 	PostStatistics(params commons.RCalcStatistic) error
 	GetStatistics() ([]commons.RCalcStatistic, error)
 }
 
-type RetirementCalc struct {
+type FireCalc struct {
 	DB *gorm.DB
 }
 
-func (r *RetirementCalc) PostStatistics(params commons.RCalcStatistic) (err error) {
+func (r *FireCalc) PostStatistics(params commons.RCalcStatistic) (err error) {
 	db := r.DB
 	db.Table("rcalc_statistics").Create(&params)
 	return
 }
 
-func (r *RetirementCalc) GetStatistics() (params []commons.RCalcStatistic, err error) {
+func (r *FireCalc) GetStatistics() (params []commons.RCalcStatistic, err error) {
 	db := r.DB
 	db.Table("rcalc_statistics").Order("created_at DESC").Find(&params)
 	return

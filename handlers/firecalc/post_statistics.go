@@ -1,4 +1,4 @@
-package retirementcalc
+package firecalc
 
 import (
 	"encoding/json"
@@ -13,7 +13,7 @@ import (
 // PostStatistics Handler
 func PostStatistics(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
-	var postStatsRequest commons.RetirementCalcPostStatisticsRequest
+	var postStatsRequest commons.FireCalcPostStatisticsRequest
 
 	err := json.NewDecoder(r.Body).Decode(&postStatsRequest)
 	if err != nil {

@@ -24,6 +24,7 @@ func GetDonate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		Contents: map[string]interface{}{
 			"Content": fileName,
 			"JS_File": "home/get_donate.js",
+			"Version": commons.GetVersion(),
 		},
 	}
 

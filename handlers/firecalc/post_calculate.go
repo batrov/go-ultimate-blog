@@ -1,4 +1,4 @@
-package retirementcalc
+package firecalc
 
 import (
 	"net/http"
@@ -14,11 +14,11 @@ func PostCalculate(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 
 	// r.ParseForm()
 
-	// params := commons.PostCalculateRetirementCalcParams{
+	// params := commons.PostCalculateFireCalcParams{
 	// 	Age: 22,
 	// }
 
-	// data, err := retirementcalc.PostCalculate(params)
+	// data, err := firecalc.PostCalculate(params)
 	// if err != nil {
 	// 	commons.PrintErr(err, "GIH_00")
 	// }

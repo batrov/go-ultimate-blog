@@ -210,7 +210,7 @@ function sendStatistics() {
         if (this.readyState == 4 && this.status == 200) {}
     };
 
-    xhttp.open("POST", "/retirement-calculator/statistics", true);
+    xhttp.open("POST", "/fire-calculator/statistics", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify(jsonReq));
 }
