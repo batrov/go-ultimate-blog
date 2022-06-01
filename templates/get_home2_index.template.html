@@ -1,5 +1,7 @@
 {{ define "get_home2_index.template" }}
 
+{{ $version := index .Contents "Version" }}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -523,7 +525,7 @@ https://templatemo.com/tm-464-ultra-profile
     <script src="/assets/vendor/templatemo-ultraprofile/js/jquery.nav.js"></script>
     <script src="/assets/vendor/templatemo-ultraprofile/js/isotope.js"></script>
     <script src="/assets/vendor/templatemo-ultraprofile/js/imagesloaded.min.js"></script>
-    <script src="/assets/vendor/templatemo-ultraprofile/js/custom.js"></script>
+    <script src="/assets/vendor/templatemo-ultraprofile/js/custom.js?{{ $version }}"></script>
 </body>
 
 </html>
