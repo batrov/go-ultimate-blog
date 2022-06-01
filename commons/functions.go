@@ -76,8 +76,8 @@ func IsEven(val int) bool {
 }
 
 func GetVersion() string {
-	if len(os.Getenv("VERSION")) > 0 {
-		return os.Getenv("VERSION")
+	if len(Version) > 0 {
+		return Version
 	}
 	return fmt.Sprintf("%d", time.Now().Unix())
 }

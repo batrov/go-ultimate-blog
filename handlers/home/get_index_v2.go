@@ -17,7 +17,11 @@ func GetIndexV2(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 	t := commons.GetTemplate().Lookup(fileName)
 
-	templateData := commons.TemplateData{}
+	templateData := commons.TemplateData{
+		Contents: map[string]interface{}{
+			"Version": commons.GetVersion(),
+		},
+	}
 
 	err = t.Execute(w, templateData)
 	if err != nil {
