@@ -2,8 +2,16 @@
 
 Use go version 1.18.2
 
+### Optional Dependencies
+Using air for auto reload on save
+`make install-air`
+
 ### Build
-`go build`
+`make build`
 
 ### Run
-`go run app.go`
+`make run`
+
+### Dev
+Build and run binary using air
+`make dev`

@@ -12,6 +12,7 @@ body {
   font-size: 16px;
   color: #606060;
   position: relative;
+  overflow-y: hidden;
 }
 html, body {
   width: 100%;

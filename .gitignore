@@ -2,3 +2,4 @@ go-ultimate-blog
 assets/json/survey-answers.json
 assets/json/rcalc-stats.json
 .env
+tmp
