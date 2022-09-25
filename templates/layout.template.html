@@ -20,9 +20,9 @@
     <link rel="stylesheet" type="text/css" href="/assets/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/about.css?{{ $version }}">
     {{ else if eq ( $content ) "get_openmap_index.template" }} 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
     <link rel="stylesheet" type="text/css" href="/assets/css/openmap.css?{{ $version }}">
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
     {{ else if eq ( $content ) "get_firecalc_index.template" }} 
     <link rel="stylesheet" type="text/css" href="/assets/css/firecalc.css?{{ $version }}">
     {{ end }}
