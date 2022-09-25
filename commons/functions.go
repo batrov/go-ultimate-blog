@@ -22,7 +22,7 @@ func GetPort() string {
 	if p != "" {
 		return ":" + p
 	}
-	return ":8080"
+	return ":8081"
 }
 
 func GetEnv() string {

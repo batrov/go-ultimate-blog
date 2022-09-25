@@ -1,3 +1,5 @@
+var layer;
+
 var view = new ol.View({
     center: ol.proj.fromLonLat([112.632629, -7.966620]),
     zoom: 10
@@ -29,7 +31,8 @@ function showPosition(position) {
 
     var curLoc = ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]);
 
-    var layer = new ol.layer.Vector({
+    map.removeLayer(layer);
+    layer = new ol.layer.Vector({
         source: new ol.source.Vector({
             features: [
                 new ol.Feature({
