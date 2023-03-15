@@ -27,7 +27,7 @@ func Init() (err error) {
 			DB: db,
 		},
 	}
-	return err
+	return nil
 }
 
 func Get() Repositories {
