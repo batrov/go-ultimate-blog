@@ -15,6 +15,11 @@ type Repositories struct {
 	RCalcStatsRepo rcalc_statistics.FireCalcI
 }
 
+const (
+	DRIVER_POSTGRES = "POSTGRES"
+	DRIVER_SQLITE   = "SQLITE"
+)
+
 var repo Repositories
 
 func Init() (err error) {
@@ -24,9 +29,9 @@ func Init() (err error) {
 
 	dbDriver := os.Getenv("DATABASE_DRIVER")
 	dsn := os.Getenv("DATABASE_URL")
-	if dbDriver == "POSTGRES" {
+	if dbDriver == DRIVER_POSTGRES {
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	} else { // use sqlite by default
+	} else if dbDriver == DRIVER_SQLITE {
 		if len(dsn) == 0 {
 			dsn = "database1.db"
 		}
