@@ -15,6 +15,8 @@ type Contact struct {
 
 func (r *Contact) PostContact(params commons.Contact) (err error) {
 	db := r.DB
-	db.Create(&params)
+	if db != nil {
+		db.Create(&params)
+	}
 	return nil
 }
