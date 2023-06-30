@@ -21,7 +21,7 @@ func Init() (err error) {
 		db *gorm.DB
 	)
 	dsn := os.Getenv("DATABASE_URL")
-	if len(dsn) >= 0 {
+	if len(dsn) > 0 {
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	}
 	repo = Repositories{
