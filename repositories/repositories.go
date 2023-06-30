@@ -17,8 +17,13 @@ type Repositories struct {
 var repo Repositories
 
 func Init() (err error) {
+	var (
+		db *gorm.DB
+	)
 	dsn := os.Getenv("DATABASE_URL")
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if len(dsn) >= 0 {
+		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	}
 	repo = Repositories{
 		ContactRepo: &contact.Contact{
 			DB: db,
@@ -27,7 +32,7 @@ func Init() (err error) {
 			DB: db,
 		},
 	}
-	return nil
+	return err
 }
 
 func Get() Repositories {
