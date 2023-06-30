@@ -1,6 +1,6 @@
 # Hermawan's Go Ultimate Blog
 
-Use go version 1.18.2
+Use go version 1.20
 
 ### Optional Dependencies
 Using air for auto reload on save
