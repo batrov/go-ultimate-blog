@@ -1,13 +1,13 @@
-var allowedNumberInput = ["1","2","3","4","5","6","7","8","9","0",".","Backspace","ArrowLeft","ArrowUp","ArrowRight","ArrowDown","Delete"];
+var allowedNumberInput = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ".", "Backspace", "ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", "Delete"];
 
-$(document).ready(function() {
+$(document).ready(function () {
     doCalculate()
 
-    $('.form-group').keyup(function() {
+    $('.form-group').keyup(function () {
         doCalculate()
     });
 
-    $('.menu-wrapper #btn-advanced').click(function() {
+    $('.menu-wrapper #btn-advanced').click(function () {
         advanced = $("#advanced").val()
         if (advanced == "0") {
             $("#advanced").val("1")
@@ -27,17 +27,17 @@ $(document).ready(function() {
         doCalculate()
     });
 
-    $('.menu-wrapper #btn-exit').click(function() {
+    $('.menu-wrapper #btn-exit').click(function () {
         window.location.href = '/';
     });
 
-    $(".ot-expenses-wrapper").on('click', '.btn-add-oew', function(e) {
+    $(".ot-expenses-wrapper").on('click', '.btn-add-oew', function (e) {
         $('.ot-expenses-wrapper').append($(this).parent().parent()[0].outerHTML)
         $('.btn-del-oew').show()
         doCalculate()
     });
 
-    $(".ot-expenses-wrapper").on('click', '.btn-del-oew', function(e) {
+    $(".ot-expenses-wrapper").on('click', '.btn-del-oew', function (e) {
         if ($('.ot-expenses-wrapper').children().length > 1) {
             $(this).parent().parent().remove()
             if ($('.ot-expenses-wrapper').children().length > 1) {
@@ -80,14 +80,17 @@ $(document).ready(function() {
         }
 
         if (advancedMode) {
-            $(".ot-expenses").each(function() {
+            $(".ot-expenses").each(function () {
                 lifetimeExpenses += parseInt($(this).val())
             });
         }
 
         for (i = 0; i < workingYear * 12; i++) {
             workingMonth++
-            raisedIncome = raisedIncome * (100 + (raise / 12)) / 100
+            if (workingMonth % 13 == 0) { // raise only at the start of next year
+                raisedIncome = raisedIncome * (100 + raise) / 100
+                console.log(raisedIncome)
+            }
             savingsInterestsSum = savingsInterests / 100 * savings
             savings += savingsInterestsSum
             lifetimeIncome += raisedIncome
@@ -109,7 +112,7 @@ $(document).ready(function() {
 
         $('#result-work-time').text(yearOfWork + " " + monthOfWork)
         $('#result-lifetime-expenses').text(lifetimeExpenses.toLocaleString() + " " + currency)
-        
+
         resultRetire = ""
         resultRetireSummary = ""
 
@@ -148,9 +151,8 @@ $(document).ready(function() {
         $('#result-lifetime-income').text(lifetimeIncome.toLocaleString() + " " + currency)
 
     }
-    
 
-    $(".custom-form-input").keydown(function(e) {
+    $(".custom-form-input").keydown(function (e) {
         var isAllowed = allowedNumberInput.includes(e.key)
 
         if (e.key == ".") {
@@ -162,7 +164,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".custom-form-input").keyup(function(e) {
+    $(".custom-form-input").keyup(function (e) {
         var key = $(this).attr('id').substring(5);
         $(this).val($(this).val().replace(/,/g, ""));
 
@@ -186,7 +188,7 @@ $(document).ready(function() {
 function sendStatistics() {
     let otherExpenses = 0
 
-    $(".ot-expenses").each(function() {
+    $(".ot-expenses").each(function () {
         otherExpenses += parseInt($(this).val())
     });
 
@@ -206,8 +208,8 @@ function sendStatistics() {
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {}
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) { }
     };
 
     xhttp.open("POST", "/fire-calculator/statistics", true);
@@ -215,7 +217,7 @@ function sendStatistics() {
     xhttp.send(JSON.stringify(jsonReq));
 }
 
-window.addEventListener("beforeunload", function(e) {
+window.addEventListener("beforeunload", function (e) {
     sendStatistics()
 }, false);
 
@@ -223,4 +225,11 @@ function addCommas(x) {
     var parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
+}
+
+function formatNumber() { // TODO: fix this
+    var input = document.getElementsByClassName("ot-expenses");
+    var value = input.value.replace(/,/g, "");
+    var formattedValue = Number(value).toLocaleString();
+    input.value = formattedValue;
 }

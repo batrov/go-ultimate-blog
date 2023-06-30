@@ -1,14 +1,15 @@
-{{ define "get_firecalc_index.template" }} 
+{{ define "get_firecalc_index.template" }}
 
 <div class="text-center m-5">
-    {{ template "navigator.template" . }} 
+    {{ template "navigator.template" . }}
     <div>
         <div class="header-style">
             <h1><b>F.I.R.E.</b> Calculator</h1>
             <h4>Financial Independence, Retire Early</h4>
             <div class="menu-wrapper text-right">
                 <input type="hidden" id="advanced" value="0">
-                <button type="button" class="btn btn-warning" id="btn-advanced" data-toggle="tooltip" title="Advanced mode provide income increment percentage and savings">Advanced Mode</button>
+                <button type="button" class="btn btn-warning" id="btn-advanced" data-toggle="tooltip"
+                    title="Advanced mode provide income increment percentage and savings">Advanced Mode</button>
             </div>
         </div>
         <hr />
@@ -21,7 +22,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="lifespan">Your Estimated Lifespan (Year): </label>
-                        <input type="number" class="form-control" id="lifespan" placeholder="e.g. 70" value="79">    
+                        <input type="number" class="form-control" id="lifespan" placeholder="e.g. 70" value="79">
                     </div>
                     <div class="col-md-4">
                         <label for="currency">Currency: </label>
@@ -33,58 +34,74 @@
                 <div class="col-md-12 row">
                     <div class="col-md-8">
                         <label for="income">Your Income per Month: </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-income" placeholder="e.g. 5,000,000" value="0" min="0">        
-                        <input hidden type="number" class="form-control" id="income" placeholder="e.g. 5000000" value="0" min="0">        
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-income" placeholder="e.g. 5,000,000" value="0" min="0">
+                        <input hidden type="number" class="form-control" id="income" placeholder="e.g. 5000000"
+                            value="0" min="0">
                     </div>
                     <div class="col-md-4">
                         <label for="raise">Income Raise per Year (%): </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-raise" placeholder="e.g. 10" value="10" min="0">        
-                        <input hidden type="number" class="form-control" id="raise" placeholder="e.g. 10" value="10" min="0">        
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-raise" placeholder="e.g. 10" value="10" min="0">
+                        <input hidden type="number" class="form-control" id="raise" placeholder="e.g. 10" value="10"
+                            min="0">
                     </div>
-                </div>           
+                </div>
                 <br />
 
                 <div class="col-md-12 row">
                     <div class="col-md-8">
                         <label for="expenses">Your Expenses per Month: </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-expenses" placeholder="e.g. 5,000,000" value="0" min="0">        
-                        <input hidden type="number" class="form-control" id="expenses" placeholder="e.g. 5000000" value="0" min="0">        
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-expenses" placeholder="e.g. 5,000,000" value="0" min="0">
+                        <input hidden type="number" class="form-control" id="expenses" placeholder="e.g. 5000000"
+                            value="0" min="0">
                     </div>
                     <div class="col-md-4">
                         <label for="inflation">Inflation per Year (%): </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-inflation" placeholder="e.g. 3.2" value="5.9" step="0.01">
-                        <input hidden type="number" class="form-control" id="inflation" placeholder="e.g. 3.2" value="5.9" step="0.01">
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-inflation" placeholder="e.g. 3.2" value="5.9" step="0.01">
+                        <input hidden type="number" class="form-control" id="inflation" placeholder="e.g. 3.2"
+                            value="5.9" step="0.01">
                     </div>
-                </div>           
+                </div>
                 <br />
 
                 <div class="col-md-12 row">
                     <div class="col-md-8">
                         <label for="savings">Your Current Savings : </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-savings" placeholder="e.g. 5,000,000" value="0" min="0">        
-                        <input hidden type="number" class="form-control" id="savings" placeholder="e.g. 5000000" value="0" min="0">        
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-savings" placeholder="e.g. 5,000,000" value="0" min="0">
+                        <input hidden type="number" class="form-control" id="savings" placeholder="e.g. 5000000"
+                            value="0" min="0">
                     </div>
                     <div class="col-md-4">
                         <label for="savings-interests">Savings Interests per Month (%): </label>
-                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-savings-interests" placeholder="e.g. 0.5" value="0.5" step="0.01">
-                        <input hidden type="number" class="form-control" id="savings-interests" placeholder="e.g. 0.5" value="0.5" step="0.01">
+                        <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                            id="text-savings-interests" placeholder="e.g. 0.5" value="0.5" step="0.01">
+                        <input hidden type="number" class="form-control" id="savings-interests" placeholder="e.g. 0.5"
+                            value="0.5" step="0.01">
                     </div>
-                </div>           
+                </div>
                 <br />
 
                 <div class="advanced-wrapper" style="display: none;">
                     <div class="col-md-12 row">
                         <div class="col-md-8">
                             <label for="investments">Savings / Investments per Month: </label>
-                            <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-investments" placeholder="e.g. 5,000,000" value="0" min="0">        
-                            <input hidden type="number" class="form-control" id="investments" placeholder="e.g. 5000000" value="0" min="0">        
+                            <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                                id="text-investments" placeholder="e.g. 5,000,000" value="0" min="0">
+                            <input hidden type="number" class="form-control" id="investments" placeholder="e.g. 5000000"
+                                value="0" min="0">
                         </div>
                         <div class="col-md-4">
                             <label for="returns">Interests / Returns per Year (%): </label>
-                            <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric" id="text-returns" placeholder="e.g. 3.2" value="6.0" step="0.01">
-                            <input hidden type="number" class="form-control" id="returns" placeholder="e.g. 3.2" value="6.0" step="0.01">
+                            <input type="text" class="form-control custom-form-input" pattern="\d*" inputmode="numeric"
+                                id="text-returns" placeholder="e.g. 3.2" value="6.0" step="0.01">
+                            <input hidden type="number" class="form-control" id="returns" placeholder="e.g. 3.2"
+                                value="6.0" step="0.01">
                         </div>
-                    </div>           
+                    </div>
                     <br />
 
                     <div class="col-md-12 row">
@@ -96,33 +113,39 @@
 
                             <div class="col-md-12 row mb-1">
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" placeholder="e.g. House" value="House">        
+                                    <input type="text" class="form-control" placeholder="e.g. House" value="House">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000" value="0" min="0">        
+                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000"
+                                        value="0" min="0" oninput="formatNumber()">
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> + </button>
-                                    <button type="button" class="btn btn-danger btn-del-oew" style="width: 45%;"> - </button>
+                                    <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> +
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-del-oew" style="width: 45%;"> -
+                                    </button>
                                 </div>
                                 <br />
                             </div>
 
                             <div class="col-md-12 row mb-1">
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" placeholder="e.g. House" value="Marriage">        
+                                    <input type="text" class="form-control" placeholder="e.g. House" value="Marriage">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000" value="0" min="0">        
+                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000"
+                                        value="0" min="0">
                                 </div>
                                 <div class="col-md-3">
-                                    <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> + </button>
-                                    <button type="button" class="btn btn-danger btn-del-oew" style="width: 45%;"> - </button>
+                                    <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> +
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-del-oew" style="width: 45%;"> -
+                                    </button>
                                 </div>
                             </div>
 
                         </div>
-                    </div>           
+                    </div>
                     <br />
 
                 </div>
@@ -137,27 +160,39 @@
             <h3>Result:</h3>
             <table class="result-table">
                 <tr>
-                    <td class="result-data"><h4>Retirement age: </h4></td>
+                    <td class="result-data">
+                        <h4>Retirement age: </h4>
+                    </td>
                     <td class="result-data2" id="result-retired-age"></td>
                 </tr>
                 <tr>
-                    <td class="result-data"><h4>Total work time: </h4></td>
+                    <td class="result-data">
+                        <h4>Total work time: </h4>
+                    </td>
                     <td class="result-data2" id="result-work-time"></td>
                 </tr>
                 <tr>
-                    <td class="result-data"><h4>Total lifetime expenses: </h4></td>
+                    <td class="result-data">
+                        <h4>Total lifetime expenses: </h4>
+                    </td>
                     <td class="result-data2" id="result-lifetime-expenses"></td>
                 </tr>
                 <tr>
-                    <td class="result-data"><h4>Total lifetime income: </h4></td>
+                    <td class="result-data">
+                        <h4>Total lifetime income: </h4>
+                    </td>
                     <td class="result-data2" id="result-lifetime-income"></td>
                 </tr>
                 <tr class="result-can-retire">
-                    <td class="result-data"><h4>Remaining savings: </h4></td>
+                    <td class="result-data">
+                        <h4>Remaining savings: </h4>
+                    </td>
                     <td class="result-data2 text-success" id="result-lifetime-savings"></td>
                 </tr>
                 <tr class="result-cannot-retire">
-                    <td class="result-data"><h4>Remaining debts: </h4></td>
+                    <td class="result-data">
+                        <h4>Remaining debts: </h4>
+                    </td>
                     <td class="result-data2 text-danger" id="result-remaining-debts"></td>
                 </tr>
             </table>
