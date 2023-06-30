@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/Batrov/go-ultimate-blog/repositories/contact"
@@ -23,20 +24,28 @@ const (
 var repo Repositories
 
 func Init() (err error) {
-	var (
-		db *gorm.DB
-	)
+	var db *gorm.DB
 
 	dbDriver := os.Getenv("DATABASE_DRIVER")
 	dsn := os.Getenv("DATABASE_URL")
-	if dbDriver == DRIVER_POSTGRES {
+
+	switch dbDriver {
+	case DRIVER_POSTGRES:
 		db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	} else if dbDriver == DRIVER_SQLITE {
+		fmt.Println("Using POSTGRES...")
+
+	case DRIVER_SQLITE:
 		if len(dsn) == 0 {
 			dsn = "database1.db"
 		}
+		fmt.Println("Using SQLITE...")
 		db, err = gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+	default:
+		fmt.Println("Using JSON...")
+
+		// use json file
 	}
+
 	repo = Repositories{
 		ContactRepo: &contact.Contact{
 			DB: db,

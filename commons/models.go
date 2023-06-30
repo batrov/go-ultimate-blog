@@ -12,18 +12,18 @@ type Contact struct {
 }
 
 type RCalcStatistic struct {
-	ID             int64     `db:"id"`
-	Age            int64     `db:"age"`
-	Lifespan       int64     `db:"lifespan"`
-	Income         float64   `db:"income"`
-	Expenses       float64   `db:"expenses"`
-	Inflation      float64   `db:"inflation"`
-	Currency       string    `db:"currency"`
-	Raise          float64   `db:"raise"`
-	AdvancedMode   bool      `db:"advanced_mode"`
-	Investments    float64   `db:"investments"`
-	Returns        float64   `db:"returns"`
-	OtherExpenses  int64     `db:"other_expenses"`
-	CurrentSavings float64   `db:"current_savings"`
-	CreatedAt      time.Time `db:"created_at"`
+	ID             int64     `json:"id" db:"id"`
+	Age            int64     `json:"age" db:"age"`
+	Lifespan       int64     `json:"lifespan" db:"lifespan"`
+	Income         float64   `json:"income" db:"income"`
+	Expenses       float64   `json:"expenses" db:"expenses"`
+	Inflation      float64   `json:"inflation" db:"inflation"`
+	Currency       string    `json:"currency" db:"currency"`
+	Raise          float64   `json:"raise" db:"raise"`
+	AdvancedMode   bool      `json:"advanced_mode" db:"advanced_mode"`
+	Investments    float64   `json:"investments" db:"investments"`
+	Returns        float64   `json:"returns" db:"returns"`
+	OtherExpenses  int64     `json:"other_expenses" db:"other_expenses"`
+	CurrentSavings float64   `json:"current_savings" db:"current_savings"`
+	CreatedAt      time.Time `json:"created_at" db:"created_at"`
 }
