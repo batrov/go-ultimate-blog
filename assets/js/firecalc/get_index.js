@@ -89,7 +89,6 @@ $(document).ready(function () {
             workingMonth++
             if (workingMonth % 13 == 0) { // raise only at the start of next year
                 raisedIncome = raisedIncome * (100 + raise) / 100
-                console.log(raisedIncome)
             }
             savingsInterestsSum = savingsInterests / 100 * savings
             savings += savingsInterestsSum

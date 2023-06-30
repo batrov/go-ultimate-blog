@@ -3,7 +3,6 @@ package rcalc_statistics
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -48,7 +47,7 @@ func (r *FireCalc) PostStatistics(params commons.RCalcStatistic) (err error) {
 
 	defer jsonFile.Close()
 
-	byteValue, err := ioutil.ReadAll(jsonFile)
+	byteValue, err := os.ReadFile(commons.FireCalcJsonPath)
 	if err != nil {
 		return
 	}
@@ -65,7 +64,7 @@ func (r *FireCalc) PostStatistics(params commons.RCalcStatistic) (err error) {
 		return
 	}
 
-	err = ioutil.WriteFile(commons.FireCalcJsonPath, newFile, 0644)
+	err = os.WriteFile(commons.FireCalcJsonPath, newFile, 0644)
 	if err != nil {
 		err = commons.Error(err, "PS_02")
 		return
@@ -89,7 +88,7 @@ func (r *FireCalc) GetStatistics() (params []commons.RCalcStatistic, err error) 
 
 	defer jsonFile.Close()
 
-	byteValue, err := ioutil.ReadAll(jsonFile)
+	byteValue, err := os.ReadFile(commons.FireCalcJsonPath)
 	if err != nil {
 		err = commons.Error(err, "GS_01")
 		return
