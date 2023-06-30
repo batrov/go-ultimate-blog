@@ -17,4 +17,4 @@ Build and run binary using air
 `make dev`
 
 ### Deployment
-Railway: `https://hermawan.up.railway.app`
+Railway: https://hermawan.up.railway.app
