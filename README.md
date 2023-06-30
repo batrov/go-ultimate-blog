@@ -15,3 +15,6 @@ Using air for auto reload on save
 ### Dev
 Build and run binary using air
 `make dev`
+
+### Deployment
+Railway: `https://hermawan.up.railway.app`
