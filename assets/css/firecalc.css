@@ -1,3 +1,15 @@
+body {
+    font-size: 1.75rem;
+}
+
+.form-control {
+    font-size: 2rem;
+}
+
+table {
+    font-size: 1.75rem;
+}
+
 .result-table {
     border: double;
     width: 100%;
