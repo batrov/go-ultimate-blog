@@ -44,15 +44,20 @@ $(document).ready(function () {
 
         // Set the unique ID to the second sibling element
         $clonedObject.find('.otx-text').attr('id', uniqueId);
+        $clonedObject.find('.otx-text').val("0");
 
         // Set the unique ID to the second sibling element
         $clonedObject.find('.ot-expenses').attr('id', uniqueIdNum);
+        $clonedObject.find('.ot-expenses').val(0);
+
+        $clonedObject.find('.otx-desc').val("");
 
         // Append the new object to the "ot-expenses-wrapper" element
         $('.ot-expenses-wrapper').append($clonedObject);
 
         // Show elements with the class "btn-del-oew"
         $('.btn-del-oew').show();
+        $(this).hide();
 
         // Attach keyup and keydown event listeners to the cloned object
         $clonedObject.find('.custom-form-input').on('keyup', addCommaOnKeyUp).on('keydown', preventStringInput);
@@ -70,6 +75,8 @@ $(document).ready(function () {
             } else {
                 $('.btn-del-oew').hide()
             }
+
+            $('.btn-add-oew').last().show();
         }
         doCalculate()
     });
