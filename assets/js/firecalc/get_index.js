@@ -31,11 +31,36 @@ $(document).ready(function () {
         window.location.href = '/';
     });
 
+    var counter = 2; // Counter to generate unique IDs
+
     $(".ot-expenses-wrapper").on('click', '.btn-add-oew', function (e) {
-        $('.ot-expenses-wrapper').append($(this).parent().parent()[0].outerHTML)
-        $('.btn-del-oew').show()
-        doCalculate()
+        // Generate a unique ID using the counter
+        var uniqueId = 'text-otx' + counter;
+        var uniqueIdNum = 'otx' + counter;
+        counter++;
+
+        // Create a new object with the unique ID
+        var $clonedObject = $(this).parent().parent().clone();
+
+        // Set the unique ID to the second sibling element
+        $clonedObject.find('.otx-text').attr('id', uniqueId);
+
+        // Set the unique ID to the second sibling element
+        $clonedObject.find('.ot-expenses').attr('id', uniqueIdNum);
+
+        // Append the new object to the "ot-expenses-wrapper" element
+        $('.ot-expenses-wrapper').append($clonedObject);
+
+        // Show elements with the class "btn-del-oew"
+        $('.btn-del-oew').show();
+
+        // Attach keyup and keydown event listeners to the cloned object
+        $clonedObject.find('.custom-form-input').on('keyup', addCommaOnKeyUp).on('keydown', preventStringInput);
+
+        // Call the doCalculate() function
+        doCalculate();
     });
+
 
     $(".ot-expenses-wrapper").on('click', '.btn-del-oew', function (e) {
         if ($('.ot-expenses-wrapper').children().length > 1) {
@@ -151,38 +176,44 @@ $(document).ready(function () {
 
     }
 
-    $(".custom-form-input").keydown(function (e) {
-        var isAllowed = allowedNumberInput.includes(e.key)
+    $(".custom-form-input").keydown(preventStringInput);
 
-        if (e.key == ".") {
-            isAllowed = !$(this).val().includes(e.key)
-        }
-
-        if (!isAllowed) {
-            e.preventDefault();
-        }
-    });
-
-    $(".custom-form-input").keyup(function (e) {
-        var key = $(this).attr('id').substring(5);
-        $(this).val($(this).val().replace(/,/g, ""));
-
-        if ($(this).val().length > 1) {
-            while ($(this).val()[0] == "0") {
-                $(this).val($(this).val().substring(1));
-            }
-        }
-
-        if ($(this).val().length < 1) {
-            $(this).val("0");
-        }
-
-        var floatVal = parseFloat($(this).val())
-
-        $(`#${key}`).val(floatVal);
-        $(this).val(addCommas($(this).val()));
-    });
+    $(".custom-form-input").keyup(addCommaOnKeyUp);
 });
+
+
+function preventStringInput(e) {
+    var isAllowed = allowedNumberInput.includes(e.key)
+
+    if (e.key == ".") {
+        isAllowed = !$(this).val().includes(e.key)
+    }
+
+    if (!isAllowed) {
+        e.preventDefault();
+    }
+}
+
+function addCommaOnKeyUp(e) {
+    var key = $(this).attr('id').substring(5);
+
+    $(this).val($(this).val().replace(/,/g, ""));
+
+    if ($(this).val().length > 1) {
+        while ($(this).val()[0] == "0") {
+            $(this).val($(this).val().substring(1));
+        }
+    }
+
+    if ($(this).val().length < 1) {
+        $(this).val("0");
+    }
+
+    var floatVal = parseFloat($(this).val())
+
+    $(`#${key}`).val(floatVal);
+    $(this).val(addCommas($(this).val()));
+}
 
 function sendStatistics() {
     let otherExpenses = 0

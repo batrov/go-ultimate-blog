@@ -116,8 +116,10 @@
                                     <input type="text" class="form-control" placeholder="e.g. House" value="House">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000"
-                                        value="0" min="0" oninput="formatNumber()">
+                                    <input type="text" class="form-control custom-form-input otx-text" pattern="\d*"
+                                        inputmode="numeric" placeholder="e.g. 5,000,000" value="0" min="0" id="text-otx0">
+                                    <input hidden="" type="number" class="form-control ot-expenses" id="otx0"
+                                        placeholder="e.g. 5000000" value="0" min="0">
                                 </div>
                                 <div class="col-md-3">
                                     <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> +
@@ -133,8 +135,10 @@
                                     <input type="text" class="form-control" placeholder="e.g. House" value="Marriage">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control ot-expenses" placeholder="e.g. 5000000"
-                                        value="0" min="0">
+                                    <input type="text" class="form-control custom-form-input otx-text" pattern="\d*"
+                                        inputmode="numeric" placeholder="e.g. 5,000,000" value="0" min="0" id="text-otx1">
+                                    <input hidden="" type="number" class="form-control ot-expenses" id="otx1"
+                                        placeholder="e.g. 5000000" value="0" min="0">
                                 </div>
                                 <div class="col-md-3">
                                     <button type="button" class="btn btn-success btn-add-oew" style="width: 45%;"> +
