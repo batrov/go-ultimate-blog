@@ -43,3 +43,9 @@ table {
     padding: 16px;
     border-style: inset;
 }
+
+.clear-btn {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1rem;
+}

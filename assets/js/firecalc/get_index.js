@@ -34,6 +34,8 @@ $(document).ready(function () {
     var counter = 2; // Counter to generate unique IDs
 
     $(".ot-expenses-wrapper").on('click', '.btn-add-oew', function (e) {
+        $('.clear-btn').remove();
+
         // Generate a unique ID using the counter
         var uniqueId = 'text-otx' + counter;
         var uniqueIdNum = 'otx' + counter;
@@ -79,6 +81,19 @@ $(document).ready(function () {
             $('.btn-add-oew').last().show();
         }
         doCalculate()
+    });
+
+
+    $(document).on('click', '.clear-btn', function () {
+        $(this).siblings('input').val(0);
+        doCalculate();
+    });
+
+    $(document).on('keydown', '.custom-form-input', preventStringInput);
+    $(document).on('keyup', '.custom-form-input', preventStringInput);
+    $(document).on('focus', '.custom-form-input', (event) => {
+        $('.clear-btn').remove();
+        $(event.target).parent().append('<button type="button" class="btn btn-link clear-btn"> clear </button>');
     });
 
     function doCalculate() {
@@ -186,6 +201,12 @@ $(document).ready(function () {
     $(".custom-form-input").keydown(preventStringInput);
 
     $(".custom-form-input").keyup(addCommaOnKeyUp);
+
+    $(".custom-form-input").on('focus', (event) => {
+        $('.clear-btn').remove();
+        $(event.target).parent().append('<button type="button" class="btn btn-link clear-btn"> clear </button>');
+    });
+
 });
 
 
