@@ -8,4 +8,4 @@ const SurveyAnswerJsonPath = "storage/survey-answers.json"
 const FireCalcJsonPath = "storage/firecalc-stats.json"
 
 // Version used to handle outdated JS and CSS
-const Version = "1.0.0"
+const Version = "1.1.0"
